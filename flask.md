@@ -194,7 +194,7 @@ First, activate your programming environment if you haven't already:
 
 ```command
 
-source <^>env<^>/bin/activate
+source env/bin/activate
 
 ```
 
@@ -514,11 +514,11 @@ def hello():
 
 
 
-<^>@app.route('/about/')<^>
+@app.route('/about/')
 
-<^>def about():<^>
+def about():
 
-    <^>return '<h3>This is a Flask web application.</h3>'<^>
+    return '<h3>This is a Flask web application.</h3>'
 
 ```
 
@@ -578,7 +578,7 @@ app = Flask(__name__)
 
 @app.route('/')
 
-<^>@app.route('/index/')<^>
+@app.route('/index/')
 
 def hello():
 
@@ -640,7 +640,7 @@ Edit `app.py` and add the following line to the top of the file, above the `Flas
 
 [label flask_app/app.py]
 
-<^>from markupsafe import escape<^>
+from markupsafe import escape
 
 from flask import Flask
 
@@ -696,11 +696,11 @@ With the development server running, open your browser and visit the following U
 
 ```
 
-http://127.0.0.1:5000/capitalize/<^>hello<^>
+http://127.0.0.1:5000/capitalize/hello
 
-http://127.0.0.1:5000/capitalize/<^>flask<^>
+http://127.0.0.1:5000/capitalize/flask
 
-http://127.0.0.1:5000/capitalize/<^>python<^>
+http://127.0.0.1:5000/capitalize/python
 
 ```
 
@@ -748,7 +748,7 @@ Save and close the file.
 
 
 
-In this route, you use a [special converter](https://flask.palletsprojects.com/en/1.1.x/quickstart/#variable-rules) `int` with the URL variable (`/add/<<^>int<^>:n1>/<<^>int<^>:n2>/`) which only accepts positive integers. By default, URL variables are assumed to be strings and are treated as such.
+In this route, you use a [special converter](https://flask.palletsprojects.com/en/1.1.x/quickstart/#variable-rules) `int` with the URL variable (`/add/<int:n1>/<int:n2>/`) which only accepts positive integers. By default, URL variables are assumed to be strings and are treated as such.
 
 
 
@@ -758,7 +758,7 @@ With the development server running, open your browser and visit the following U
 
 ```
 
-http://127.0.0.1:5000/add/<^>5<^>/<^>5<^>/
+http://127.0.0.1:5000/add/5/5/
 
 ```
 
@@ -890,9 +890,9 @@ The last two lines of the traceback usually give the source of the error. In you
 
 ```
 
-File "/home/<^>USER<^>/flask_app/app.py", line 28, in greet_user
+File "/home/USER/flask_app/app.py", line 28, in greet_user
 
-    <^>return '<h2>Hi {}</h2>'.format(users[user_id])<^>
+    return '<h2>Hi {}</h2>'.format(users[user_id])
 
 ```
 
@@ -932,7 +932,7 @@ To respond with an HTTP 404 error, you will need Flask's [`abort()`](https://fla
 
 from markupsafe import escape
 
-from flask import Flask<^>, abort<^>
+from flask import Flask, abort
 
 ```
 
@@ -956,13 +956,13 @@ def greet_user(user_id):
 
     users = ['Bob', 'Jane', 'Adam']
 
-    <^>try:<^>
+    try:
 
-        <^>return '<h2>Hi {}</h2>'.format(users[user_id])<^>
+        return '<h2>Hi {}</h2>'.format(users[user_id])
 
-    <^>except IndexError:<^>
+    except IndexError:
 
-        <^>abort(404)<^>
+        abort(404)
 
 ```
 
@@ -1312,7 +1312,7 @@ Import the [`datetime`](https://docs.python.org/3/library/datetime.html) module 
 
 [label flask_app/app.py]
 
-<^>import datetime<^>
+import datetime
 
 from flask import Flask, render_template
 
@@ -1328,7 +1328,7 @@ app = Flask(__name__)
 
 def hello():
 
-    return render_template('index.html'<^>, utc_dt=datetime.datetime.utcnow()<^>)
+    return render_template('index.html', utc_dt=datetime.datetime.utcnow())
 
 ```
 
@@ -1380,7 +1380,7 @@ Edit the file to look as follows:
 
     <h2>Welcome to FlaskApp!</h2>
 
-    <^><h3>{{ utc_dt }}</h3><^>
+    <h3>{{ utc_dt }}</h3>
 
 </body>
 
@@ -1462,7 +1462,7 @@ Write the following code inside your `base.html` file:
 
     <meta charset="UTF-8">
 
-    <title><^>{% block title %} {% endblock %}<^> - FlaskApp</title>
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
 
     <style>
 
@@ -1496,7 +1496,7 @@ Write the following code inside your `base.html` file:
 
     <div class="content">
 
-        <^>{% block content %} {% endblock %}<^>
+        {% block content %} {% endblock %}
 
     </div>
 
@@ -1570,7 +1570,7 @@ Here, you use the `{% extends %}` tag to inherit from the `base.html` template. 
 
 
 
-This content block contains an `<h1>` tag with the text `Index` inside a title block, which in turn replaces the original `title` block in the `base.html` template with the text `Index` so that the complete title becomes `<^>Index<^> - FlaskApp`. This way, you can avoid repeating the same text twice, as it works both as a title for the page and a heading that appears below the navigation bar inherited from the base template.
+This content block contains an `<h1>` tag with the text `Index` inside a title block, which in turn replaces the original `title` block in the `base.html` template with the text `Index` so that the complete title becomes `Index - FlaskApp`. This way, you can avoid repeating the same text twice, as it works both as a title for the page and a heading that appears below the navigation bar inherited from the base template.
 
 
 
@@ -1764,9 +1764,9 @@ Edit the file to look as follows:
 
     <nav>
 
-        <a href="<^>{{ url_for('hello') }}<^>">FlaskApp</a>
+        <a href="{{ url_for('hello') }}">FlaskApp</a>
 
-        <a href="<^>{{ url_for('about') }}<^>">About</a>
+        <a href="{{ url_for('about') }}">About</a>
 
     </nav>
 
@@ -1984,21 +1984,21 @@ Edit it to look as follows:
 
         {% for comment in comments %}
 
-            <^>{% if loop.index % 2 == 0 %}<^>
+            {% if loop.index % 2 == 0 %}
 
-                <^>{% set bg_color = '#e6f9ff' %}<^>
+                {% set bg_color = '#e6f9ff' %}
 
-            <^>{% else %}<^>
+            {% else %}
 
-                <^>{% set bg_color = '#eee' %}<^>
+                {% set bg_color = '#eee' %}
 
-            <^>{% endif %}<^>
+            {% endif %}
 
 
 
-            <div style="padding: 10px; background-color: <^>{{ bg_color }}<^>; margin: 20px">
+            <div style="padding: 10px; background-color: {{ bg_color }}; margin: 20px">
 
-                <^><p>#{{ loop.index }}</p><^>
+                <p>#{{ loop.index }}</p>
 
                 <p style="font-size: 24px">{{ comment }}</p>
 
@@ -2080,11 +2080,11 @@ Edit it to look as follows:
 
         {% for comment in comments %}
 
-            <^><div style="padding: 10px;<^>
+            <div style="padding: 10px;
 
-                        <^>background-color: {{ loop.cycle('#EEE', '#e6f9ff') }};<^>
+                        background-color: {{ loop.cycle('#EEE', '#e6f9ff') }};
 
-                        <^>margin: 20px"><^>
+                        margin: 20px">
 
                 <p>#{{ loop.index }}</p>
 
@@ -2150,21 +2150,21 @@ And edit it to look as follows:
 
         {% for comment in comments %}
 
-            <^>{% if loop.index != 2 %}<^>
+            {% if loop.index != 2 %}
 
-                <^><div style="padding: 10px;<^>
+                <div style="padding: 10px;
 
-                            <^>background-color: #EEE;<^>
+                            background-color: #EEE;
 
-                            <^>margin: 20px"><^>
+                            margin: 20px">
 
-                    <^><p>#{{ loop.index }}</p><^>
+                    <p>#{{ loop.index }}</p>
 
-                    <^><p style="font-size: 24px">{{ comment }}</p><^>
+                    <p style="font-size: 24px">{{ comment }}</p>
 
-                <^></div><^>
+                </div>
 
-            <^>{% endif %}<^>
+            {% endif %}
 
         {% endfor %}
 
@@ -2240,7 +2240,7 @@ Edit the contents of the `<nav>` tag by adding a new `<a>` link to it:
 
         <a href="{{ url_for('hello') }}">FlaskApp</a>
 
-        <^><a href="{{ url_for('comments') }}">Comments</a><^>
+        <a href="{{ url_for('comments') }}">Comments</a>
 
         <a href="{{ url_for('about') }}">About</a>
 
@@ -2326,7 +2326,7 @@ Edit it to look as follows:
 
                     <p>#{{ loop.index }}</p>
 
-                    <p style="font-size: 24px">{{ comment<^> | upper <^>}}</p>
+                    <p style="font-size: 24px">{{ comment | upper }}</p>
 
                 </div>
 
@@ -2420,13 +2420,13 @@ Edit it to look as follows:
 
         {% endfor %}
 
-        <^><hr><^>
+        <hr>
 
-        <^><div><^>
+        <div>
 
-            <^><p>{{ comments | join(" | ") }}</p><^>
+            <p>{{ comments | join(" | ") }}</p>
 
-        <^></div><^>
+        </div>
 
     </div>
 
@@ -2514,9 +2514,9 @@ Edit it to look as follows:
 
         <div>
 
-            <^>{{ "<h1>COMMENTS</h1>" }}<^>
+            {{ "<h1>COMMENTS</h1>" }}
 
-            <p>{{ comments | join("<^> <hr> <^>") }}</p>
+            <p>{{ comments | join(" <hr> ") }}</p>
 
         </div>
 
@@ -2598,9 +2598,9 @@ Edit it by adding the `safe` filter:
 
         <div>
 
-            {{ "<h1>COMMENTS</h1>"<^> | safe <^>}}
+            {{ "<h1>COMMENTS</h1>" | safe }}
 
-            <p>{{ comments | join(" <hr> ")<^> | safe <^>}}</p>
+            <p>{{ comments | join(" <hr> ") | safe }}</p>
 
         </div>
 
@@ -2698,7 +2698,7 @@ Edit it to look as follows:
 
 
 
-    <^><title>{% block title %} {% endblock %} - FlaskApp</title><^>
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
 
   </head>
 
@@ -2708,7 +2708,7 @@ Edit it to look as follows:
 
     <div class="container-fluid">
 
-        <^><a class="navbar-brand" href="{{ url_for('hello') }}">FlaskApp</a><^>
+        <a class="navbar-brand" href="{{ url_for('hello') }}">FlaskApp</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -2722,13 +2722,13 @@ Edit it to look as follows:
 
             <li class="nav-item">
 
-              <^><a class="nav-link" href="{{ url_for('comments') }}">Comments</a><^>
+              <a class="nav-link" href="{{ url_for('comments') }}">Comments</a>
 
             </li>
 
             <li class="nav-item">
 
-              <^><a class="nav-link" href="{{ url_for('about') }}">About</a><^>
+              <a class="nav-link" href="{{ url_for('about') }}">About</a>
 
             </li>
 
@@ -2740,11 +2740,11 @@ Edit it to look as follows:
 
     </nav>
 
-    <^><div class="container"><^>
+    <div class="container">
 
-        <^>{% block content %} {% endblock %}<^>
+        {% block content %} {% endblock %}
 
-    <^></div><^>
+    </div>
 
 
 
@@ -3148,7 +3148,7 @@ Modify the file to look as follows:
 
 
 
-from flask import Flask<^>, render_template<^>
+from flask import Flask, render_template
 
 
 
@@ -3236,7 +3236,7 @@ Add the following code to your `base.html` file:
 
     <meta charset="UTF-8">
 
-    <title><^>{% block title %} {% endblock %}<^> - FlaskApp</title>
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
 
     <style>
 
@@ -3260,7 +3260,7 @@ Add the following code to your `base.html` file:
 
     <nav>
 
-        <a href="<^>{{ url_for('index') }}<^>">FlaskApp</a>
+        <a href="{{ url_for('index') }}">FlaskApp</a>
 
         <a href="#">About</a>
 
@@ -3270,7 +3270,7 @@ Add the following code to your `base.html` file:
 
     <div class="content">
 
-        <^>{% block content %} {% endblock %}<^>
+        {% block content %} {% endblock %}
 
     </div>
 
@@ -3396,7 +3396,7 @@ Save and close the file.
 
 
 
-In the route above, you have a URL variable `idx`. This is the index that will determine what message will be displayed. For example, if the URL is `/messages/<^>0<^>`, the first message (`Message Zero`) will be displayed. You use the [`int` converter](https://flask.palletsprojects.com/en/2.0.x/quickstart/#variable-rules) to accept only positive integers, because URL variables have string values by default. 
+In the route above, you have a URL variable `idx`. This is the index that will determine what message will be displayed. For example, if the URL is `/messages/0`, the first message (`Message Zero`) will be displayed. You use the [`int` converter](https://flask.palletsprojects.com/en/2.0.x/quickstart/#variable-rules) to accept only positive integers, because URL variables have string values by default. 
 
 
 
@@ -3490,7 +3490,7 @@ Edit the first line to import the `abort()` function. Then edit the `message()` 
 
 [label flask_app/app.py]
 
-from flask import Flask, render_template<^>, abort<^>
+from flask import Flask, render_template, abort
 
 
 
@@ -3508,13 +3508,13 @@ def message(idx):
 
     messages = ['Message Zero', 'Message One', 'Message Two']
 
-    <^>try:<^>
+    try:
 
-        <^>return render_template('message.html', message=messages[idx])<^>
+        return render_template('message.html', message=messages[idx])
 
-    <^>except IndexError:<^>
+    except IndexError:
 
-        <^>abort(404)<^>
+        abort(404)
 
 ```
 
@@ -3524,7 +3524,7 @@ Save and close the file.
 
 
 
-In the code above, you import the [`abort()`](https://flask.palletsprojects.com/en/2.0.x/api/#flask.abort) function, which you use to abort the request and respond with an error. In the `message()` view function, you use a `try ... except` clause to wrap the function. You first try to return the `messages` template with the message that corresponds to the index in the URL. If the index has no corresponding message, the `IndexError` exception will be raised. You then use the `except` clause to catch that error, and you use `abort(<^>404<^>)` to abort the request and respond with a `404 Not Found` HTTP error.
+In the code above, you import the [`abort()`](https://flask.palletsprojects.com/en/2.0.x/api/#flask.abort) function, which you use to abort the request and respond with an error. In the `message()` view function, you use a `try ... except` clause to wrap the function. You first try to return the `messages` template with the message that corresponds to the index in the URL. If the index has no corresponding message, the `IndexError` exception will be raised. You then use the `except` clause to catch that error, and you use `abort(404)` to abort the request and respond with a `404 Not Found` HTTP error.
 
 
 
@@ -3534,7 +3534,7 @@ With the development server running, use your browser to revisit the URL that re
 
 ```
 
-http://127.0.0.1:5000/messages/<^>3<^>
+http://127.0.0.1:5000/messages/3
 
 ```
 
@@ -3594,11 +3594,11 @@ app = Flask(__name__)
 
 
 
-<^>@app.errorhandler(404)<^>
+@app.errorhandler(404)
 
-<^>def page_not_found(error):<^>
+def page_not_found(error):
 
-    <^>return render_template('404.html'), 404<^>
+    return render_template('404.html'), 404
 
 
 
@@ -3736,11 +3736,11 @@ def page_not_found(error):
 
 
 
-<^>@app.errorhandler(500)<^>
+@app.errorhandler(500)
 
-<^>def internal_error(error):<^>
+def internal_error(error):
 
-<^>    return render_template('500.html'), 500<^>
+    return render_template('500.html'), 500
 
 
 
@@ -3878,13 +3878,13 @@ In these logs, you can see the following information:
 
 
 
-* `<^>127.0.0.1<^>`: The host the server was running on.
+* `127.0.0.1`: The host the server was running on.
 
-* `<^>[21/Sep/2021 14:36:45]<^>`: The date and time of the request.
+* `[21/Sep/2021 14:36:45]`: The date and time of the request.
 
-* `<^>GET<^>`: The [HTTP request method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET). In this case, `GET` is used to retrieve data.
+* `GET`: The [HTTP request method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET). In this case, `GET` is used to retrieve data.
 
-* `<^>/messages/2<^>`: The path the user requested.
+* `/messages/2`: The path the user requested.
 
 * `HTTP/1.1`: The HTTP version.
 
@@ -3942,19 +3942,19 @@ Edit the `message()` view function to look as follows:
 
 def message(idx):
 
-    <^>app.logger.info('Building the messages list...')<^>
+    app.logger.info('Building the messages list...')
 
     messages = ['Message Zero', 'Message One', 'Message Two']
 
     try:
 
-        <^>app.logger.debug('Get message with index: {}'.format(idx))<^>
+        app.logger.debug('Get message with index: {}'.format(idx))
 
         return render_template('message.html', message=messages[idx])
 
     except IndexError:
 
-        <^>app.logger.error('Index {} is causing an IndexError'.format(idx))<^>
+        app.logger.error('Index {} is causing an IndexError'.format(idx))
 
         abort(404)
 
@@ -4196,7 +4196,7 @@ Add the following code inside the `base.html` file to create the base template w
 
     <meta charset="UTF-8">
 
-    <title><^>{% block title %} {% endblock %}<^> - FlaskApp</title>
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
 
     <style>
 
@@ -4232,7 +4232,7 @@ Add the following code inside the `base.html` file to create the base template w
 
     <nav>
 
-        <a href="<^>{{ url_for('index') }}<^>">FlaskApp</a>
+        <a href="{{ url_for('index') }}">FlaskApp</a>
 
         <a href="#">About</a>
 
@@ -4242,7 +4242,7 @@ Add the following code inside the `base.html` file to create the base template w
 
     <div class="content">
 
-        <^>{% block content %} {% endblock %}<^>
+        {% block content %} {% endblock %}
 
     </div>
 
@@ -4472,7 +4472,7 @@ Add the following code to it:
 
                placeholder="Message title"
 
-               value="<^>{{ request.form['title'] }}<^>"></input>
+               value="{{ request.form['title'] }}"></input>
 
         <br>
 
@@ -4490,7 +4490,7 @@ Add the following code to it:
 
                   cols="60"
 
-                  ><^>{{ request.form['content'] }}<^></textarea>
+                  >{{ request.form['content'] }}</textarea>
 
         <br>
 
@@ -4588,7 +4588,7 @@ Add these imports to the first line in the file:
 
 [label flask_app/app.py]
 
-from flask import Flask, render_template<^>, request, url_for, flash, redirect<^>
+from flask import Flask, render_template, request, url_for, flash, redirect
 
 
 
@@ -4662,7 +4662,7 @@ To set the secret key, add a `SECRET_KEY` configuration to your application via 
 
 app = Flask(__name__)
 
-<^>app.config['SECRET_KEY'] = 'your secret key'<^>
+app.config['SECRET_KEY'] = 'your secret key'
 
 
 
@@ -4700,27 +4700,27 @@ Next, modify the `create()` view function to look exactly as follows:
 
 def create():
 
-    <^>if request.method == 'POST':<^>
+    if request.method == 'POST':
 
-        <^>title = request.form['title']<^>
+        title = request.form['title']
 
-        <^>content = request.form['content']<^>
+        content = request.form['content']
 
 
 
-        <^>if not title:<^>
+        if not title:
 
-            <^>flash('Title is required!')<^>
+            flash('Title is required!')
 
-        <^>elif not content:<^>
+        elif not content:
 
-            <^>flash('Content is required!')<^>
+            flash('Content is required!')
 
-        <^>else:<^>
+        else:
 
-            <^>messages.append({'title': title, 'content': content})<^>
+            messages.append({'title': title, 'content': content})
 
-            <^>return redirect(url_for('index'))<^>
+            return redirect(url_for('index'))
 
 
 
@@ -4818,17 +4818,17 @@ Edit the file by adding a new `<a>` tag after the FlaskApp link in the navigatio
 
 
 
-        <^>.alert {<^>
+        .alert {
 
-            <^>padding: 20px;<^>
+            padding: 20px;
 
-            <^>margin: 5px;<^>
+            margin: 5px;
 
-            <^>color: #970020;<^>
+            color: #970020;
 
-            <^>background-color: #ffd5de;<^>
+            background-color: #ffd5de;
 
-        <^>}<^>
+        }
 
 
 
@@ -4842,7 +4842,7 @@ Edit the file by adding a new `<a>` tag after the FlaskApp link in the navigatio
 
         <a href="{{ url_for('index') }}">FlaskApp</a>
 
-        <^><a href="{{ url_for('create') }}">Create</a><^>
+        <a href="{{ url_for('create') }}">Create</a>
 
         <a href="#">About</a>
 
@@ -4852,11 +4852,11 @@ Edit the file by adding a new `<a>` tag after the FlaskApp link in the navigatio
 
     <div class="content">
 
-        <^>{% for message in get_flashed_messages() %}<^>
+        {% for message in get_flashed_messages() %}
 
-            <^><div class="alert">{{ message }}</div><^>
+            <div class="alert">{{ message }}</div>
 
-        <^>{% endfor %}<^>
+        {% endfor %}
 
         {% block content %} {% endblock %}
 
@@ -5196,7 +5196,7 @@ from forms import CourseForm
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = '<^>your secret key<^>'
+app.config['SECRET_KEY'] = 'your secret key'
 
 
 
@@ -5300,7 +5300,7 @@ Add the following code inside the `base.html` file to create the base template w
 
     <meta charset="UTF-8">
 
-    <title><^>{% block title %} {% endblock %}<^> - FlaskApp</title>
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
 
     <style>
 
@@ -5324,7 +5324,7 @@ Add the following code inside the `base.html` file to create the base template w
 
     <nav>
 
-        <a href="<^>{{ url_for('index') }}<^>">FlaskApp</a>
+        <a href="{{ url_for('index') }}">FlaskApp</a>
 
         <a href="#">About</a>
 
@@ -5334,7 +5334,7 @@ Add the following code inside the `base.html` file to create the base template w
 
     <div class="content">
 
-        <^>{% block content %} {% endblock %}<^>
+        {% block content %} {% endblock %}
 
     </div>
 
@@ -5540,11 +5540,11 @@ You extend the base template, and set a title in an `<h1>` tag. Then you render 
 
 
 
-You render each field using the syntax `form.<^>field()<^>` and you render its label using the syntax `form.<^>field<^>.label`. You can pass arguments to the field to control how it is displayed. For example, you set the size of the title input field in `{{ form.title(size=20) }}`, and you set the numbers of rows and columns for the description text area via the parameters `rows` and `cols` the same way you would do normally in HTML. You can use the same method to pass additional HTML attributes to a field such as the `class` attribute to set a CSS class.
+You render each field using the syntax `form.field()` and you render its label using the syntax `form.field.label`. You can pass arguments to the field to control how it is displayed. For example, you set the size of the title input field in `{{ form.title(size=20) }}`, and you set the numbers of rows and columns for the description text area via the parameters `rows` and `cols` the same way you would do normally in HTML. You can use the same method to pass additional HTML attributes to a field such as the `class` attribute to set a CSS class.
 
 
 
-You check for validation errors using the syntax `if form.<^>field<^>.errors`. If a field has errors, you loop through them with a `for` loop and display them in a list below the field.
+You check for validation errors using the syntax `if form.field.errors`. If a field has errors, you loop through them with a `for` loop and display them in a list below the field.
 
 
 
@@ -5794,7 +5794,7 @@ Edit it to look as follows:
 
         <a href="{{ url_for('index') }}">FlaskApp</a>
 
-        <^><a href="{{ url_for('courses') }}">Courses</a><^>
+        <a href="{{ url_for('courses') }}">Courses</a>
 
         <a href="#">About</a>
 
@@ -5866,21 +5866,21 @@ def index():
 
     form = CourseForm()
 
-    <^>if form.validate_on_submit():<^>
+    if form.validate_on_submit():
 
-        <^>courses_list.append({'title': form.title.data,<^>
+        courses_list.append({'title': form.title.data,
 
-                             <^>'description': form.description.data,<^>
+                             'description': form.description.data,
 
-                             <^>'price': form.price.data,<^>
+                             'price': form.price.data,
 
-                             <^>'available': form.available.data,<^>
+                             'available': form.available.data,
 
-                             <^>'level': form.level.data<^>
+                             'level': form.level.data
 
-                             <^>})<^>
+                             })
 
-        <^>return redirect(url_for('courses'))<^>
+        return redirect(url_for('courses'))
 
     return render_template('index.html', form=form)
 
@@ -5892,7 +5892,7 @@ Here, you call the `validate_on_submit()` method on the `form` object, which che
 
 
 
-If the submitted form data is valid, the condition is `True`, and the code below the `if` statement will be executed. You build a course dictionary, and use the `append` method to add the new course to the `courses_list` list. You access the value of each field using the syntax `form.<^>field<^>.data`. After you add the new course dictionary to the courses list, you redirect the user to the `Courses` page.
+If the submitted form data is valid, the condition is `True`, and the code below the `if` statement will be executed. You build a course dictionary, and use the `append` method to add the new course to the `courses_list` list. You access the value of each field using the syntax `form.field.data`. After you add the new course dictionary to the courses list, you redirect the user to the `Courses` page.
 
 
 
@@ -6244,7 +6244,7 @@ Add the following code inside the `base.html` file:
 
     <meta charset="UTF-8">
 
-    <title><^>{% block title %} {% endblock %}<^>- FlaskApp</title>
+    <title>{% block title %} {% endblock %}- FlaskApp</title>
 
     <style>
 
@@ -6280,7 +6280,7 @@ Add the following code inside the `base.html` file:
 
     <nav>
 
-        <a href="<^>{{ url_for('index') }}<^>">FlaskApp</a>
+        <a href="{{ url_for('index') }}">FlaskApp</a>
 
         <a href="#">About</a>
 
@@ -6290,7 +6290,7 @@ Add the following code inside the `base.html` file:
 
     <div class="content">
 
-        <^>{% block content %} {% endblock %}<^>
+        {% block content %} {% endblock %}
 
     </div>
 
@@ -6478,7 +6478,7 @@ Add these imports to the first line in the file:
 
 [label flask_app/app.py]
 
-from flask import Flask, render_template<^>, request, url_for, flash, redirect<^>
+from flask import Flask, render_template, request, url_for, flash, redirect
 
 
 
@@ -6506,7 +6506,7 @@ Set a _secret key_ by adding a `SECRET_KEY` configuration to your application vi
 
 app = Flask(__name__)
 
-<^>app.config['SECRET_KEY'] = 'your secret key'<^>
+app.config['SECRET_KEY'] = 'your secret key'
 
 ```
 
@@ -6584,7 +6584,7 @@ Add the following code to it:
 
                placeholder="Post title"
 
-               value="<^>{{ request.form['title'] }}<^>"></input>
+               value="{{ request.form['title'] }}"></input>
 
         <br>
 
@@ -6602,7 +6602,7 @@ Add the following code to it:
 
                   cols="60"
 
-                  ><^>{{ request.form['content'] }}<^></textarea>
+                  >{{ request.form['content'] }}</textarea>
 
         <br>
 
@@ -6682,37 +6682,37 @@ Edit the `/create` route to look as follows:
 
 def create():
 
-    <^>if request.method == 'POST':<^>
+    if request.method == 'POST':
 
-        <^>title = request.form['title']<^>
+        title = request.form['title']
 
-        <^>content = request.form['content']<^>
+        content = request.form['content']
 
-<^><^>
 
-        <^>if not title:<^>
 
-            <^>flash('Title is required!')<^>
+        if not title:
 
-        <^>elif not content:<^>
+            flash('Title is required!')
 
-            <^>flash('Content is required!')<^>
+        elif not content:
 
-        <^>else:<^>
+            flash('Content is required!')
 
-            <^>conn = get_db_connection()<^>
+        else:
 
-            <^>conn.execute('INSERT INTO posts (title, content) VALUES (?, ?)',<^>
+            conn = get_db_connection()
 
-                         <^>(title, content))<^>
+            conn.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
 
-            <^>conn.commit()<^>
+                         (title, content))
 
-            <^>conn.close()<^>
+            conn.commit()
 
-            <^>return redirect(url_for('index'))<^>
+            conn.close()
 
-<^><^>
+            return redirect(url_for('index'))
+
+
 
     return render_template('create.html')
 
@@ -6818,17 +6818,17 @@ Edit the file to look as follows:
 
 
 
-        <^>.alert {<^>
+        .alert {
 
-            <^>padding: 20px;<^>
+            padding: 20px;
 
-            <^>margin: 5px;<^>
+            margin: 5px;
 
-            <^>color: #970020;<^>
+            color: #970020;
 
-            <^>background-color: #ffd5de;<^>
+            background-color: #ffd5de;
 
-        <^>}<^>
+        }
 
     </style>
 
@@ -6840,7 +6840,7 @@ Edit the file to look as follows:
 
         <a href="{{ url_for('index') }}">FlaskApp</a>
 
-        <^><a href="{{ url_for('create') }}">Create</a><^>
+        <a href="{{ url_for('create') }}">Create</a>
 
         <a href="#">About</a>
 
@@ -6850,11 +6850,11 @@ Edit the file to look as follows:
 
     <div class="content">
 
-        <^>{% for message in get_flashed_messages() %}<^>
+        {% for message in get_flashed_messages() %}
 
-            <^><div class="alert">{{ message }}</div><^>
+            <div class="alert">{{ message }}</div>
 
-        <^>{% endfor %}<^>
+        {% endfor %}
 
 
 
@@ -6932,7 +6932,7 @@ Add the `abort()` function to the imports:
 
 [label flask_app/app.py]
 
-from flask import Flask, render_template, request, url_for, flash, redirect<^>, abort<^>
+from flask import Flask, render_template, request, url_for, flash, redirect, abort
 
 ```
 
@@ -6962,21 +6962,21 @@ def get_db_connection():
 
 
 
-<^>def get_post(post_id):<^>
+def get_post(post_id):
 
-    <^>conn = get_db_connection()<^>
+    conn = get_db_connection()
 
-    <^>post = conn.execute('SELECT * FROM posts WHERE id = ?',<^>
+    post = conn.execute('SELECT * FROM posts WHERE id = ?',
 
-                        <^>(post_id,)).fetchone()<^>
+                        (post_id,)).fetchone()
 
-    <^>conn.close()<^>
+    conn.close()
 
-    <^>if post is None:<^>
+    if post is None:
 
-        <^>abort(404)<^>
+        abort(404)
 
-    <^>return post<^>
+    return post
 
 
 
@@ -7062,7 +7062,7 @@ Save and close the file.
 
 
 
-You use the route `/<int:<^>id<^>>/edit/`, with `int:` being a [converter](https://www.digitalocean.com/community/tutorials/how-to-create-your-first-web-application-using-flask-and-python-3#step-5-%E2%80%94-dynamic-routes) that accepts positive integers. And `id` is the URL variable that will determine the post you want to edit. For example, `/<^>2<^>/edit/` will allow you to edit the post with the ID of `<^>2<^>`. The ID is passed from the URL to the `edit()` view function. You pass the value of the `id` argument to the `get_post()` function to fetch the post associated with the provided ID from the database. Remember that this will respond with a `404 Not Found` error if no post with the given ID exists.
+You use the route `/<int:id>/edit/`, with `int:` being a [converter](https://www.digitalocean.com/community/tutorials/how-to-create-your-first-web-application-using-flask-and-python-3#step-5-%E2%80%94-dynamic-routes) that accepts positive integers. And `id` is the URL variable that will determine the post you want to edit. For example, `/2/edit/` will allow you to edit the post with the ID of `2`. The ID is passed from the URL to the `edit()` view function. You pass the value of the `id` argument to the `get_post()` function to fetch the post associated with the provided ID from the database. Remember that this will respond with a `404 Not Found` error if no post with the given ID exists.
 
 
 
@@ -7218,7 +7218,7 @@ Edit the file to look exactly like the following:
 
             <p>{{ post['content'] }}</p>
 
-            <^><a href="{{ url_for('edit', id=post['id']) }}">Edit</a><^>
+            <a href="{{ url_for('edit', id=post['id']) }}">Edit</a>
 
         </div>
 
@@ -7250,7 +7250,7 @@ In this step, you will add a Delete button to the Edit page to allow users to de
 
 
 
-First, you’ll add a new `/<^>id<^>/delete` route that accepts POST requests, similar to the `edit()` view function. Your new `delete()` view function will receive the ID of the post to be deleted from the URL, retrieve it using the `get_post()` function, and then delete it from the database if it exists.
+First, you’ll add a new `/id/delete` route that accepts POST requests, similar to the `edit()` view function. Your new `delete()` view function will receive the ID of the post to be deleted from the URL, retrieve it using the `get_post()` function, and then delete it from the database if it exists.
 
 
 
@@ -7304,7 +7304,7 @@ Save and close the file.
 
 
 
-This view function only accepts POST requests in the `methods` parameter. This means that navigating to the `/<^>ID<^>/delete` route on your browser will return a `405 Method Not Allowed` error, because web browsers default to GET requests. To delete a post, the user clicks on a button that sends a POST request to this route.
+This view function only accepts POST requests in the `methods` parameter. This means that navigating to the `/ID/delete` route on your browser will return a `405 Method Not Allowed` error, because web browsers default to GET requests. To delete a post, the user clicks on a button that sends a POST request to this route.
 
 
 
@@ -7346,17 +7346,17 @@ Then add the following `<hr>` and `<form>` tags directly before the `{% endblock
 
 
 
-<^><^>
 
-    <^><hr><^>
 
-    <^><form action="{{ url_for('delete', id=post['id']) }}" method="POST"><^>
+    <hr>
 
-        <^><input type="submit" value="Delete Post"<^>
+    <form action="{{ url_for('delete', id=post['id']) }}" method="POST">
 
-                <^>onclick="return confirm('Are you sure you want to delete this post?')"><^>
+        <input type="submit" value="Delete Post"
 
-    <^></form><^>
+                onclick="return confirm('Are you sure you want to delete this post?')">
+
+    </form>
 
 {% endblock %}
 
@@ -7376,7 +7376,7 @@ Now navigate again to the Edit page of a post and try deleting it:
 
 ```
 
-http://127.0.0.1:5000/<^>1<^>/edit
+http://127.0.0.1:5000/1/edit
 
 ```
 
@@ -7492,7 +7492,7 @@ First, create a database for your project:
 
 ```custom_prefix(postgres=#)
 
-CREATE DATABASE <^>flask_db<^>;
+CREATE DATABASE flask_db;
 
 ```
 
@@ -7512,7 +7512,7 @@ Next, create a database user for our project. Make sure to select a secure passw
 
 ```custom_prefix(postgres=#)
 
-CREATE USER <^>sammy<^> WITH PASSWORD '<^>password<^>';
+CREATE USER sammy WITH PASSWORD 'password';
 
 ```
 
@@ -7524,7 +7524,7 @@ Then give this new user access to administer your new database:
 
 ```custom_prefix(postgres=#)
 
-GRANT ALL PRIVILEGES ON DATABASE <^>flask_db<^> TO <^>sammy<^>;
+GRANT ALL PRIVILEGES ON DATABASE flask_db TO sammy;
 
 ```
 
@@ -7780,9 +7780,9 @@ For the database connection to be established, set the `DB_USERNAME` and `DB_PAS
 
 ```custom_prefix((env)sammy@localhost:$)
 
-export DB_USERNAME="<^>sammy<^>"
+export DB_USERNAME="sammy"
 
-export DB_PASSWORD="<^>password<^>"
+export DB_PASSWORD="password"
 
 ```
 
@@ -7910,7 +7910,7 @@ def get_db_connection():
 
     conn = psycopg2.connect(host='localhost',
 
-                            database='<^>flask_db<^>',
+                            database='flask_db',
 
                             user=os.environ['DB_USERNAME'],
 
@@ -7994,7 +7994,7 @@ Add the following code inside the `base.html` file:
 
     <meta charset="UTF-8">
 
-    <title><^>{% block title %} {% endblock %}<^>- FlaskApp</title>
+    <title>{% block title %} {% endblock %}- FlaskApp</title>
 
     <style>
 
@@ -8042,7 +8042,7 @@ Add the following code inside the `base.html` file:
 
     <nav>
 
-        <a href="<^>{{ url_for('index') }}<^>">FlaskApp</a>
+        <a href="{{ url_for('index') }}">FlaskApp</a>
 
         <a href="#">About</a>
 
@@ -8052,7 +8052,7 @@ Add the following code inside the `base.html` file:
 
     <div class="content">
 
-        <^>{% block content %} {% endblock %}<^>
+        {% block content %} {% endblock %}
 
     </div>
 
@@ -8156,9 +8156,9 @@ Make sure you set the `DB_USERNAME` and `DB_PASSWORD` environment variables if y
 
 ```custom_prefix((env)sammy@localhost:$)
 
-export DB_USERNAME="<^>sammy<^>"
+export DB_USERNAME="sammy"
 
-export DB_PASSWORD="<^>password<^>"
+export DB_PASSWORD="password"
 
 ```
 
@@ -8250,7 +8250,7 @@ Add these imports to the first line in the file:
 
 
 
-from flask import Flask, render_template<^>, request, url_for, redirect<^>
+from flask import Flask, render_template, request, url_for, redirect
 
 
 
@@ -8472,35 +8472,35 @@ Edit the `/create` route to look as follows:
 
 def create():
 
-    <^>if request.method == 'POST':<^>
+    if request.method == 'POST':
 
-        <^>title = request.form['title']<^>
+        title = request.form['title']
 
-        <^>author = request.form['author']<^>
+        author = request.form['author']
 
-        <^>pages_num = int(request.form['pages_num'])<^>
+        pages_num = int(request.form['pages_num'])
 
-        <^>review = request.form['review']<^>
+        review = request.form['review']
 
-<^><^>
 
-        <^>conn = get_db_connection()<^>
 
-        <^>cur = conn.cursor()<^>
+        conn = get_db_connection()
 
-        <^>cur.execute('INSERT INTO books (title, author, pages_num, review)'<^>
+        cur = conn.cursor()
 
-                    <^>'VALUES (%s, %s, %s, %s)',<^>
+        cur.execute('INSERT INTO books (title, author, pages_num, review)'
 
-                    <^>(title, author, pages_num, review))<^>
+                    'VALUES (%s, %s, %s, %s)',
 
-        <^>conn.commit()<^>
+                    (title, author, pages_num, review))
 
-        <^>cur.close()<^>
+        conn.commit()
 
-        <^>conn.close()<^>
+        cur.close()
 
-        <^>return redirect(url_for('index'))<^>
+        conn.close()
+
+        return redirect(url_for('index'))
 
 
 
@@ -8630,7 +8630,7 @@ Edit the file to look as follows:
 
         <a href="{{ url_for('index') }}">FlaskApp</a>
 
-        <^><a href="{{ url_for('create') }}">Create</a><^>
+        <a href="{{ url_for('create') }}">Create</a>
 
         <a href="#">About</a>
 
@@ -8762,7 +8762,7 @@ It is **strongly** recommended that you harden your MongoDB installation's secur
 Once you enable authentication in MongoDB, you'll need to pass additional `username` and `password` parameters when creating an instance of `MongoClient()` like so:
 
 ```python
-client = MongoClient('localhost', 27017, username='<^>username<^>', password='<^>password<^>')
+client = MongoClient('localhost', 27017, username='username', password='password')
 ```
 <$>
 
@@ -8801,7 +8801,7 @@ First, add the following imports from `flask`:
 
 ```python
 [label flask_app/app.py]
-from flask import Flask<^>, render_template, request, url_for, redirect<^>
+from flask import Flask, render_template, request, url_for, redirect
 from pymongo import MongoClient
 
 # ...
@@ -8928,14 +8928,14 @@ Edit the `/` route to look as follows:
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
-    <^>if request.method=='POST':<^>
-        <^>content = request.form['content']<^>
-        <^>degree = request.form['degree']<^>
-        <^>todos.insert_one({'content': content, 'degree': degree})<^>
-        <^>return redirect(url_for('index'))<^>
-<^><^>
-    <^>all_todos = todos.find()<^>
-    return render_template('index.html'<^>, todos=all_todos<^>)
+    if request.method=='POST':
+        content = request.form['content']
+        degree = request.form['degree']
+        todos.insert_one({'content': content, 'degree': degree})
+        return redirect(url_for('index'))
+
+    all_todos = todos.find()
+    return render_template('index.html', todos=all_todos)
 ```
 Save and close the file.
 
@@ -9010,12 +9010,12 @@ Edit the file by adding an `<hr>` break and a [Jinja `for` loop](https://jinja.p
         </p>
         <button type="submit">Submit</button>
     </form>
-    <^><hr><^>
-    <^>{% for todo in todos %}<^>
-        <^><div class="todo"><^>
-            <^><p>{{ todo['content'] }} <i>({{ todo['degree']}})</i></p><^>
-        <^></div><^>
-    <^>{% endfor %}<^>
+    <hr>
+    {% for todo in todos %}
+        <div class="todo">
+            <p>{{ todo['content'] }} <i>({{ todo['degree']}})</i></p>
+        </div>
+    {% endfor %}
 
     </div>
 </body>
@@ -9033,7 +9033,7 @@ Now refresh your index page, fill in the web form, and submit it. You'll see the
 ## Step 4 — Deleting Todos
 In this step, you'll add a route that allows users to delete todos using a button.
 
-First, you'll add a new `/<^>id<^>/delete` route that accepts POST requests. Your new `delete()` view function will receive the ID of the todo to be deleted from the URL, then use that ID to delete it.
+First, you'll add a new `/id/delete` route that accepts POST requests. Your new `delete()` view function will receive the ID of the todo to be deleted from the URL, then use that ID to delete it.
 
 To delete a todo, you get its ID as a string, and you must convert it to an [ObjectId](https://pymongo.readthedocs.io/en/stable/api/bson/objectid.html#bson.objectid.ObjectId) before passing it to the collection's delete method. So you need to import the `ObjectId()` class from the [`bson` module](https://pymongo.readthedocs.io/en/stable/api/bson/index.html), which handles BSON (Binary JSON) encoding and decoding.
 
@@ -9070,7 +9070,7 @@ def delete(id):
 
 Save and close the file.
 
-Here, instead of using the usual `app.route` decorator, you use the [`app.post`](https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.post) decorator introduced in [Flask version 2.0.0](https://flask.palletsprojects.com/en/2.0.x/changes/#version-2-0-0), which added shortcuts for common HTTP methods. For example, `@app.post("/login")` is a shortcut for `@app.route("/login", methods=["POST"])`. This means that this view function only accepts POST requests, and navigating to the `/<^>ID<^>/delete` route on your browser will return a `405 Method Not Allowed` error, because web browsers default to GET requests. To delete a todo, the user clicks on a button that sends a POST request to this route.
+Here, instead of using the usual `app.route` decorator, you use the [`app.post`](https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.post) decorator introduced in [Flask version 2.0.0](https://flask.palletsprojects.com/en/2.0.x/changes/#version-2-0-0), which added shortcuts for common HTTP methods. For example, `@app.post("/login")` is a shortcut for `@app.route("/login", methods=["POST"])`. This means that this view function only accepts POST requests, and navigating to the `/ID/delete` route on your browser will return a `405 Method Not Allowed` error, because web browsers default to GET requests. To delete a todo, the user clicks on a button that sends a POST request to this route.
 
 The function receives the ID of the todo document to be deleted. You pass this ID to the [`delete_one()`](https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.delete_one) method on the `todos` collection, and you convert the string ID you receive to an ObjectId using the `ObjectId()` class you imported earlier.
 
@@ -9090,10 +9090,10 @@ Edit the `for` loop by adding a new `<form>` tag:
     {% for todo in todos %}
         <div class="todo">
             <p>{{ todo['content'] }} <i>({{ todo['degree']}})</i></p>
-            <^><form method="POST" action="{{ url_for('delete', id=todo['_id']) }}" ><^>
-                <^><input type="submit" value="Delete Todo"<^>
-                       <^>onclick="return confirm('Are you sure you want to delete this entry?')"><^>
-            <^></form><^>
+            <form method="POST" action="{{ url_for('delete', id=todo['_id']) }}" >
+                <input type="submit" value="Delete Todo"
+                       onclick="return confirm('Are you sure you want to delete this entry?')">
+            </form>
         </div>
     {% endfor %}
 ```
@@ -9211,7 +9211,7 @@ Here, you construct a path for your SQLite database file. You first define a bas
 
 You then create a Flask application instance called `app`, which you use to configure two Flask-SQLAlchemy [configuration keys](https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/):
 
-* `SQLALCHEMY_DATABASE_URI`: The database URI to specify the database you want to establish a connection with. In this case, the URI follows the format `sqlite:///<^>path/to/database.db<^>`. You use the [`os.path.join()`](https://docs.python.org/3.8/library/os.path.html#os.path.join) function to intelligently join the base directory you constructed and stored in the `basedir` variable, and the `database.db` file name. This will connect to a `database.db` database file in your `flask_app` directory. The file will be created once you initiate the database.
+* `SQLALCHEMY_DATABASE_URI`: The database URI to specify the database you want to establish a connection with. In this case, the URI follows the format `sqlite:///path/to/database.db`. You use the [`os.path.join()`](https://docs.python.org/3.8/library/os.path.html#os.path.join) function to intelligently join the base directory you constructed and stored in the `basedir` variable, and the `database.db` file name. This will connect to a `database.db` database file in your `flask_app` directory. The file will be created once you initiate the database.
 
 * `SQLALCHEMY_TRACK_MODIFICATIONS`: A configuration to enable or disable tracking modifications of objects. You set it to `False` to disable tracking and use less memory. For more, see [the configuration page](https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/) in the Flask-SQLAlchemy documentation.
 
@@ -9222,12 +9222,12 @@ If you want to use another database engine such as PostgreSQL or MySQL, you'll n
 
 For PostgreSQL, use the following format:
 ```
-postgresql://<^>username<^>:<^>password<^>@<^>host<^>:<^>port<^>/<^>database_name<^>
+postgresql://username:password@host:port/database_name
 ```
 
 For MySQL:
 ```
-mysql://<^>username<^>:<^>password<^>@<^>host<^>:<^>port<^>/<^>database_name<^>
+mysql://username:password@host:port/database_name
 ```
 
 For more, see the [SQLAlchemy documentation for engine configuration](https://docs.sqlalchemy.org/en/14/core/engines.html).
@@ -9635,7 +9635,7 @@ You've displayed the students you have in your database on the index page. Next,
 ## Step 4 — Displaying a Single Record
 In this step, you'll use the Flask shell to query students by their ID, and create a route and a template to display the details of each student on a dedicated page.
 
-By the end of this step, the URL `http://127.0.0.1:5000/1` will be a page that displays the first student (because it has the ID `1`). The URL `http://127.0.0.1:5000/<^>ID<^>` will display the post with the associated `<^>ID<^>` number, if it exists.
+By the end of this step, the URL `http://127.0.0.1:5000/1` will be a page that displays the first student (because it has the ID `1`). The URL `http://127.0.0.1:5000/ID` will display the post with the associated `ID` number, if it exists.
 
 Leave the development server running and open a new terminal window.
 
@@ -9670,7 +9670,7 @@ Student.query.filter_by(firstname='Sammy').first()
 <Student Sammy>
 ```
 
-To get a student by its ID, you can use `filter_by(id=<^>ID<^>)`:
+To get a student by its ID, you can use `filter_by(id=ID)`:
 
 ```custom_prefix(>>>)
 Student.query.filter_by(id=3).first()
@@ -9714,7 +9714,7 @@ def student(student_id):
 
 Save and close the file.
 
-Here, you use the route `'/<int:<^>student_id<^>>/'`, with `<^>int:<^>` being a [converter](https://flask.palletsprojects.com/en/2.0.x/quickstart/#variable-rules) that converts the default string in the URL into an integer. And `<^>student_id<^>` is the URL variable that will determine the student you'll display on the page.
+Here, you use the route `'/<int:student_id>/'`, with `int:` being a [converter](https://flask.palletsprojects.com/en/2.0.x/quickstart/#variable-rules) that converts the default string in the URL into an integer. And `student_id` is the URL variable that will determine the student you'll display on the page.
 
 The ID is passed from the URL to the `student()` view function through the `student_id` parameter. Inside the function, you query the students collection and retrieve a student by the ID using the `get_or_404()` method. This will save the student data in the `student` variable if it exists, and respond with a `404 Not Found` HTTP error if no student with the given ID exists in the database.
 
@@ -9781,11 +9781,11 @@ Edit the `for` loop to look as follows:
     <div class="student">
         <p><b>#{{ student.id }}</b></p>
         <b>
-            <^><p class="name"><^>
-                <^><a href="{{ url_for('student', student_id=student.id)}}"><^>
-                    <^>{{ student.firstname }} {{ student.lastname }}<^>
-                <^></a><^>
-            <^></p><^>
+            <p class="name">
+                <a href="{{ url_for('student', student_id=student.id)}}">
+                    {{ student.firstname }} {{ student.lastname }}
+                </a>
+            </p>
         </b>
         <p>{{ student.email }}</p>
         <p>{{ student.age }} years old.</p>
@@ -9936,22 +9936,22 @@ Edit the `/create` route to look as follows:
 
 @app.route('/create/', methods=('GET', 'POST'))
 def create():
-    <^>if request.method == 'POST':<^>
-        <^>firstname = request.form['firstname']<^>
-        <^>lastname = request.form['lastname']<^>
-        <^>email = request.form['email']<^>
-        <^>age = int(request.form['age'])<^>
-        <^>bio = request.form['bio']<^>
-        <^>student = Student(firstname=firstname,<^>
-                          <^>lastname=lastname,<^>
-                          <^>email=email,<^>
-                          <^>age=age,<^>
-                          <^>bio=bio)<^>
-        <^>db.session.add(student)<^>
-        <^>db.session.commit()<^>
-<^><^>
-        <^>return redirect(url_for('index'))<^>
-<^><^>
+    if request.method == 'POST':
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        email = request.form['email']
+        age = int(request.form['age'])
+        bio = request.form['bio']
+        student = Student(firstname=firstname,
+                          lastname=lastname,
+                          email=email,
+                          age=age,
+                          bio=bio)
+        db.session.add(student)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
     return render_template('create.html')
 ```
 Save and close the file.
@@ -9983,7 +9983,7 @@ Edit the `<body>` tag by modifying the value of the `href` attribute for the `Cr
 <body>
     <nav>
         <a href="{{ url_for('index') }}">FlaskApp</a>
-        <a href="<^>{{ url_for('create') }}<^>">Create</a>
+        <a href="{{ url_for('create') }}">Create</a>
         <a href="#">About</a>
     </nav>
     <hr>
@@ -10000,7 +10000,7 @@ Refresh your index page and you’ll notice the **Create** link in the navigatio
 You now have a page with a web form for adding new students. For more on web forms, see [How To Use Web Forms in a Flask Application](https://www.digitalocean.com/community/tutorials/how-to-use-web-forms-in-a-flask-application). For a more advanced and more secure method of managing web forms, see [How To Use and Validate Web Forms with Flask-WTF](https://www.digitalocean.com/community/tutorials/how-to-use-and-validate-web-forms-with-flask-wtf). Next, you'll add a page for editing the data of existing students.
 
 ## Step 6 — Editing a Record
-In this step, you'll add a new page to your application for editing existing student data. You'll add a new `/<^>ID<^>/edit/` route to edit the data of students based on their ID.
+In this step, you'll add a new page to your application for editing existing student data. You'll add a new `/ID/edit/` route to edit the data of students based on their ID.
 
 Open `app.py`:
 
@@ -10163,7 +10163,7 @@ Edit the `for` loop in this `index.html` file to look exactly like the following
             <h4>Bio</h4>
             <p>{{ student.bio }}</p>
         </div>
-        <^><a href="{{ url_for('edit', student_id=student.id) }}">Edit</a><^>
+        <a href="{{ url_for('edit', student_id=student.id) }}">Edit</a>
     </div>
 {% endfor %}
 ```
@@ -10176,7 +10176,7 @@ You now have a page for editing existing students. Next, you'll add a **Delete**
 ## Step 7 — Deleting a Record
 In this step, you'll add a new route and **Delete** button for deleting existing students.
 
-First, you'll add a new `/<^>id<^>/delete` route that accepts POST requests. Your new `delete()` view function will receive the ID of the student you want to delete, pass the ID to the `get_or_404()` query method on the `Student` model to get it if it exists, or respond with a `404 Not Found` page if no student with the given ID was found on the database.
+First, you'll add a new `/id/delete` route that accepts POST requests. Your new `delete()` view function will receive the ID of the student you want to delete, pass the ID to the `get_or_404()` query method on the `Student` model to get it if it exists, or respond with a `404 Not Found` page if no student with the given ID was found on the database.
 
 Open `app.py` for editing:
 
@@ -10201,7 +10201,7 @@ def delete(student_id):
 
 Save and close the file.
 
-Here, instead of using the usual `app.route` decorator, you use the [`app.post`](https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.post) decorator introduced in [Flask version 2.0.0](https://flask.palletsprojects.com/en/2.0.x/changes/#version-2-0-0), which added shortcuts for common HTTP methods. For example, `@app.post("/login")` is a shortcut for `@app.route("/login", methods=["POST"])`. This means that this view function only accepts POST requests, and navigating to the `/<^>ID<^>/delete` route on your browser will return a `405 Method Not Allowed` error, because web browsers default to GET requests. To delete a student, the user clicks on a button that sends a POST request to this route.
+Here, instead of using the usual `app.route` decorator, you use the [`app.post`](https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.post) decorator introduced in [Flask version 2.0.0](https://flask.palletsprojects.com/en/2.0.x/changes/#version-2-0-0), which added shortcuts for common HTTP methods. For example, `@app.post("/login")` is a shortcut for `@app.route("/login", methods=["POST"])`. This means that this view function only accepts POST requests, and navigating to the `/ID/delete` route on your browser will return a `405 Method Not Allowed` error, because web browsers default to GET requests. To delete a student, the user clicks on a button that sends a POST request to this route.
 
 This `delete()` view function receives the ID of the student to be deleted via the `student_id` URL variable. You use the `get_or_404()` method to get a student and save it in a `student` variable, or respond with a `404 Not Found` in case the student doesn't exist. You use the `delete()` method on the database session in the line `db.session.delete(student)`, passing it the student object. This sets up the session to delete the student whenever the transaction is committed. Because you don't need to perform any other modifications, you directly commit the transaction using `db.session.commit()`. Lastly, you redirect the user to the index page.
 
@@ -10235,12 +10235,12 @@ Edit the `for` loop by adding a new `<form>` tag directly below the **Edit** lin
         </div>
         <a href="{{ url_for('edit', student_id=student.id) }}">Edit</a>
 
-        <^><hr><^>
-        <^><form method="POST"<^>
-                <^>action="{{ url_for('delete', student_id=student.id) }}"><^>
-            <^><input type="submit" value="Delete Student"<^>
-                <^>onclick="return confirm('Are you sure you want to delete this entry?')"><^>
-        <^></form><^>
+        <hr>
+        <form method="POST"
+                action="{{ url_for('delete', student_id=student.id) }}">
+            <input type="submit" value="Delete Student"
+                onclick="return confirm('Are you sure you want to delete this entry?')">
+        </form>
 
     </div>
 {% endfor %}
@@ -10350,7 +10350,7 @@ Here, you construct a path for your SQLite database file. You first define a bas
 
 You then create a Flask application instance called `app`, which you use to configure two Flask-SQLAlchemy [configuration keys](https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/):
 
-* `SQLALCHEMY_DATABASE_URI`: The database URI to specify the database you want to establish a connection with. In this case, the URI follows the format `sqlite:///<^>path/to/database.db<^>`. You use the [`os.path.join()`](https://docs.python.org/3.8/library/os.path.html#os.path.join) function to intelligently join the base directory you constructed and stored in the `basedir` variable, and the `database.db` file name. This will connect to a `database.db` database file in your `flask_app` directory. The file will be created once you initiate the database.
+* `SQLALCHEMY_DATABASE_URI`: The database URI to specify the database you want to establish a connection with. In this case, the URI follows the format `sqlite:///path/to/database.db`. You use the [`os.path.join()`](https://docs.python.org/3.8/library/os.path.html#os.path.join) function to intelligently join the base directory you constructed and stored in the `basedir` variable, and the `database.db` file name. This will connect to a `database.db` database file in your `flask_app` directory. The file will be created once you initiate the database.
 
 * `SQLALCHEMY_TRACK_MODIFICATIONS`: A configuration to enable or disable tracking modifications of objects. You set it to `False` to disable tracking and use less memory. For more, see [the configuration page](https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/) in the Flask-SQLAlchemy documentation.
 
@@ -10359,12 +10359,12 @@ You then create a Flask application instance called `app`, which you use to conf
 
 For PostgreSQL, use the following format:
 ```
-postgresql://<^>username<^>:<^>password<^>@<^>host<^>:<^>port<^>/<^>database_name<^>
+postgresql://username:password@host:port/database_name
 ```
 
 For MySQL:
 ```
-mysql://<^>username<^>:<^>password<^>@<^>host<^>:<^>port<^>/<^>database_name<^>
+mysql://username:password@host:port/database_name
 ```
 
 For more, see the [SQLAlchemy documentation for engine configuration](https://docs.sqlalchemy.org/en/14/core/engines.html).
@@ -10770,7 +10770,7 @@ You've displayed the posts you have in your database on the index page. Next, yo
 
 In this step, you'll create a route and a template to display the details of each post on a dedicated page, and the post's comments below it.
 
-By the end of this step, the URL `http://127.0.0.1:5000/1` will be a page that displays the first post (because it has the ID `1`) and its comments. The URL `http://127.0.0.1:5000/<^>ID<^>` will display the post with the associated `<^>ID<^>` number, if it exists.
+By the end of this step, the URL `http://127.0.0.1:5000/1` will be a page that displays the first post (because it has the ID `1`) and its comments. The URL `http://127.0.0.1:5000/ID` will display the post with the associated `ID` number, if it exists.
 
 Leave the development server running and open a new terminal window.
 
@@ -10794,7 +10794,7 @@ def post(post_id):
 
 Save and close the file.
 
-Here, you use the route `'/<int:<^>post_id<^>>/'`, with `<^>int:<^>` being a [converter](https://flask.palletsprojects.com/en/2.0.x/quickstart/#variable-rules) that converts the default string in the URL into an integer. `<^>post_id<^>` is the URL variable that will determine the post you'll display on the page.
+Here, you use the route `'/<int:post_id>/'`, with `int:` being a [converter](https://flask.palletsprojects.com/en/2.0.x/quickstart/#variable-rules) that converts the default string in the URL into an integer. `post_id` is the URL variable that will determine the post you'll display on the page.
 
 The ID is passed from the URL to the `post()` view function through the `post_id` parameter. Inside the function, you query the post table and retrieve a post by its ID using the `get_or_404()` method. This will save the post data in the `post` variable if it exists, and respond with a `404 Not Found` HTTP error if no post with the given ID exists in the database.
 
@@ -10869,7 +10869,7 @@ Edit the value of the `href` attribute of the post title's link inside the `for`
         <p><b>#{{ post.id }}</b></p>
         <b>
             <p class="title">
-                <a href="<^>{{ url_for('post', post_id=post.id)}}<^>">
+                <a href="{{ url_for('post', post_id=post.id)}}">
                 {{ post.title }}
                 </a>
             </p>
@@ -10895,7 +10895,7 @@ Click on each of the post titles on the index page. You'll now see that each pos
 You've now created a page for displaying individual posts. Next, you'll add a web form to the post page to allow users to add new comments.
 
 ## Step 5 — Adding New Comments
-In this step, you'll edit the `/<int:<^>post_id<^>>/` route and its `post()` view function, which handles displaying an individual post. You'll add a web form below each post to allow users to add comments to that post, then you'll handle the comment submission and add it to the database.
+In this step, you'll edit the `/<int:post_id>/` route and its `post()` view function, which handles displaying an individual post. You'll add a web form below each post to allow users to add comments to that post, then you'll handle the comment submission and add it to the database.
 
 First, open the `post.html` template file to add a web form consisting of a text area for the comment's content, and an **Add Comment** submit button.
 
@@ -10910,18 +10910,18 @@ Edit the file by adding a form below the `Comments` H3 heading, and directly abo
 
 <hr>
 <h3>Comments</h3>
-<^><form method="post"><^>
-    <^><p><^>
-        <^><textarea name="content"<^>
-                    <^>placeholder="Comment"<^>
-                    <^>cols="60"<^>
-                    <^>rows="5"></textarea><^>
-    <^></p><^>
-<^><^>
-    <^><p><^>
-        <^><button type="submit">Add comment</button><^>
-    <^></p><^>
-<^></form><^>
+<form method="post">
+    <p>
+        <textarea name="content"
+                    placeholder="Comment"
+                    cols="60"
+                    rows="5"></textarea>
+    </p>
+
+    <p>
+        <button type="submit">Add comment</button>
+    </p>
+</form>
 {% for comment in post.comments %}
 ```
 
@@ -10934,7 +10934,7 @@ You have a text area for the comment's content, and a submit button.
 With the development server running, use your browser to navigate to a post:
 
 ```
-http://127.0.0.1:5000/<^>2<^>/
+http://127.0.0.1:5000/2/
 ```
 
 You'll see a page similar to the following:
@@ -10949,19 +10949,19 @@ Next, you will add code to the `post()` view function to handle the form submiss
 nano app.py
 ```
 
-Edit the `/<int:<^>post_id<^>>/` route and its `post()` view function to look as follows:
+Edit the `/<int:post_id>/` route and its `post()` view function to look as follows:
 
 ```python
 [label flask_app/app.py]
 
-@app.route('/<int:post_id>/'<^>, methods=('GET', 'POST')<^>)
+@app.route('/<int:post_id>/', methods=('GET', 'POST'))
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    <^>if request.method == 'POST':<^>
-        <^>comment = Comment(content=request.form['content'], post=post)<^>
-        <^>db.session.add(comment)<^>
-        <^>db.session.commit()<^>
-        <^>return redirect(url_for('post', post_id=post.id))<^>
+    if request.method == 'POST':
+        comment = Comment(content=request.form['content'], post=post)
+        db.session.add(comment)
+        db.session.commit()
+        return redirect(url_for('post', post_id=post.id))
 
     return render_template('post.html', post=post)
 ```
@@ -11063,7 +11063,7 @@ Edit the navigation bar to look as follows:
 [label flask_app/templates/base.html]
     <nav>
         <a href="{{ url_for('index') }}">FlaskApp</a>
-        <a href="<^>{{ url_for('comments') }}<^>">Comments</a>
+        <a href="{{ url_for('comments') }}">Comments</a>
         <a href="#">About</a>
     </nav>
 ```
@@ -11077,7 +11077,7 @@ You now have a page that displays all the comments in the database. Next, you'll
 
 In this step, you'll add a **Delete Comment** button below each comment to allow users to delete unwanted comments.
 
-First, you'll add a new `/comments/<^>ID<^>/delete` route that accepts POST requests. The view function will receive the ID of the comment you want to delete, fetch it from the database, delete it, and the redirect to post page the deleted comment was on.
+First, you'll add a new `/comments/ID/delete` route that accepts POST requests. The view function will receive the ID of the comment you want to delete, fetch it from the database, delete it, and the redirect to post page the deleted comment was on.
 
 Open `app.py`:
 
@@ -11101,7 +11101,7 @@ def delete_comment(comment_id):
 ```
 Save and close the file.
 
-Here, instead of using the usual `app.route` decorator, you use the [`app.post`](https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.post) decorator introduced in [Flask version 2.0.0](https://flask.palletsprojects.com/en/2.0.x/changes/#version-2-0-0), which added shortcuts for common HTTP methods. For example, `@app.post("/login")` is a shortcut for `@app.route("/login", methods=["POST"])`. This means that this view function only accepts POST requests, and navigating to the `/comments/<^>ID<^>/delete` route on your browser will return a `405 Method Not Allowed` error, because web browsers default to GET requests. To delete a comment, the user clicks on a button that sends a POST request to this route.
+Here, instead of using the usual `app.route` decorator, you use the [`app.post`](https://flask.palletsprojects.com/en/2.0.x/api/#flask.Flask.post) decorator introduced in [Flask version 2.0.0](https://flask.palletsprojects.com/en/2.0.x/changes/#version-2-0-0), which added shortcuts for common HTTP methods. For example, `@app.post("/login")` is a shortcut for `@app.route("/login", methods=["POST"])`. This means that this view function only accepts POST requests, and navigating to the `/comments/ID/delete` route on your browser will return a `405 Method Not Allowed` error, because web browsers default to GET requests. To delete a comment, the user clicks on a button that sends a POST request to this route.
 
 This `delete_comment()` view function receives the ID of the comment to be deleted via the `comment_id` URL variable. You use the `get_or_404()` method to get a comment and save it in a `comment` variable, or respond with a `404 Not Found` in case the comment doesn't exist. You save the post ID of the post the comment belongs to in a `post_id` variable, which you'll use to redirect to the post after deleting the comment.
 
@@ -11121,12 +11121,12 @@ Edit the `for` loop by adding a new `<form>` tag directly below the comment cont
         <div class="comment">
             <p>#{{ comment.id }}</p>
             <p>{{ comment.content }}</p>
-            <^><form method="POST"<^>
-                <^>action="{{ url_for('delete_comment',<^>
-                                    <^>comment_id=comment.id) }}"><^>
-                <^><input type="submit" value="Delete Comment"<^>
-                    <^>onclick="return confirm('Are you sure you want to delete this entry?')"><^>
-            <^></form><^>
+            <form method="POST"
+                action="{{ url_for('delete_comment',
+                                    comment_id=comment.id) }}">
+                <input type="submit" value="Delete Comment"
+                    onclick="return confirm('Are you sure you want to delete this entry?')">
+            </form>
         </div>
     {% endfor %}
 ```
@@ -11138,7 +11138,7 @@ Here, you have a web form that submits a POST request to the `delete_comment()` 
 Now navigate to a post page on your browser:
 
 ```
-http://127.0.0.1:5000/<^>2<^>/
+http://127.0.0.1:5000/2/
 ```
 
 You'll see a **Delete Comment** button below each comment. Click on it, and confirm the deletion. You'll see that the comment has been deleted.
@@ -11355,9 +11355,9 @@ Here, you have two database models representing two tables:
 Below the models you have the following routes:
 
 * `/`: The index page, which displays all the posts in the database.
-* `/<int:<^>post_id<^>>/`: The individual post page. For example, the link `http://127.0.0.1:5000/<^>2<^>/` displays the details of the second post in the database and its comments.
+* `/<int:post_id>/`: The individual post page. For example, the link `http://127.0.0.1:5000/2/` displays the details of the second post in the database and its comments.
 * `/comments/`: A page that displays all the comments in the database and links to the post each comment was posted on.
-* `/comments/<int:<^>comment_id<^>>/delete`: A route that deletes a comment through a **Delete Comment** button.
+* `/comments/<int:comment_id>/delete`: A route that deletes a comment through a **Delete Comment** button.
 
 Close the `app.py` file.
 
@@ -11436,29 +11436,29 @@ Add a `post_tag` table and a `Tag` model below the `db` object and above the `Po
 # ...
 
 db = SQLAlchemy(app)
-<^><^>
-<^><^>
-<^>post_tag = db.Table('post_tag',<^>
-                    <^>db.Column('post_id', db.Integer, db.ForeignKey('post.id')),<^>
-                    <^>db.Column('tag_id', db.Integer, db.ForeignKey('tag.id'))<^>
-                    <^>)<^>
-<^><^>
-<^><^>
-<^>class Tag(db.Model):<^>
-    <^>id = db.Column(db.Integer, primary_key=True)<^>
-    <^>name = db.Column(db.String(50))<^>
-<^><^>
-    <^>def __repr__(self):<^>
-        <^>return f'<Tag "{self.name}">' <^>
-<^><^>
-<^><^>
+
+
+post_tag = db.Table('post_tag',
+                    db.Column('post_id', db.Integer, db.ForeignKey('post.id')),
+                    db.Column('tag_id', db.Integer, db.ForeignKey('tag.id'))
+                    )
+
+
+class Tag(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+
+    def __repr__(self):
+        return f'<Tag "{self.name}">' 
+
+
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     content = db.Column(db.Text)
     comments = db.relationship('Comment', backref='post')
-    <^>tags = db.relationship('Tag', secondary=post_tag, backref='posts')<^>
+    tags = db.relationship('Tag', secondary=post_tag, backref='posts')
 
     def __repr__(self):
         return f'<Post "{self.title}">'
@@ -11498,10 +11498,10 @@ Edit the file to look as follows:
 
 ```python
 [label flask_app/init_db.py]
-from app import db, Post, Comment<^>, Tag<^>
+from app import db, Post, Comment, Tag
 
-<^>db.drop_all()<^>
-<^>db.create_all()<^>
+db.drop_all()
+db.create_all()
 
 post1 = Post(title='Post The First', content='Content for the first post')
 post2 = Post(title='Post The Second', content='Content for the Second post')
@@ -11512,21 +11512,21 @@ comment2 = Comment(content='Comment for the second post', post=post2)
 comment3 = Comment(content='Another comment for the second post', post_id=2)
 comment4 = Comment(content='Another comment for the first post', post_id=1)
 
-<^>tag1 = Tag(name='animals')<^>
-<^>tag2 = Tag(name='tech')<^>
-<^>tag3 = Tag(name='cooking')<^>
-<^>tag4 = Tag(name='writing')<^>
+tag1 = Tag(name='animals')
+tag2 = Tag(name='tech')
+tag3 = Tag(name='cooking')
+tag4 = Tag(name='writing')
 
-<^>post1.tags.append(tag1)<^>  # Tag the first post with 'animals'
-<^>post1.tags.append(tag4)<^>  # Tag the first post with 'writing'
-<^>post3.tags.append(tag3)<^>  # Tag the third post with 'cooking'
-<^>post3.tags.append(tag2)<^>  # Tag the third post with 'tech'
-<^>post3.tags.append(tag4)<^>  # Tag the third post with 'writing'
+post1.tags.append(tag1)  # Tag the first post with 'animals'
+post1.tags.append(tag4)  # Tag the first post with 'writing'
+post3.tags.append(tag3)  # Tag the third post with 'cooking'
+post3.tags.append(tag2)  # Tag the third post with 'tech'
+post3.tags.append(tag4)  # Tag the third post with 'writing'
 
 
 db.session.add_all([post1, post2, post3])
 db.session.add_all([comment1, comment2, comment3, comment4])
-<^>db.session.add_all([tag1, tag2, tag3, tag4])<^>
+db.session.add_all([tag1, tag2, tag3, tag4])
 
 db.session.commit()
 ```
@@ -11882,7 +11882,7 @@ First, you'll need to import the `display_tags()` macro from the `macros.html` f
 
 ```html
 [label flask_app/templates/index.html]
-<^>{% from 'macros.html' import display_tags %}<^>
+{% from 'macros.html' import display_tags %}
 {% extends 'base.html' %}
 ```
 
@@ -11903,9 +11903,9 @@ Next, edit the `for post in posts` loop, by calling the `display_tags()` macro a
         <div class="content">
             <p>{{ post.content }}</p>
         </div>
-<^><^>
-        <^>{{ display_tags(post) }}<^>
-<^><^>
+
+        {{ display_tags(post) }}
+
         <hr>
     </div>
 {% endfor %}
@@ -11929,7 +11929,7 @@ First, import the `display_tags` macro at the top:
 
 ```html
 [label flask_app/templates/post.html]
-<^>{% from 'macros.html' import display_tags %}<^>
+{% from 'macros.html' import display_tags %}
 {% extends 'base.html' %}
 ```
 
@@ -11946,7 +11946,7 @@ Then call the `display_tags()` macro, passing it the `post` object below the pos
         <p>{{ post.content }}</p>
     </div>
 
-    <^>{{ display_tags(post) }}<^>
+    {{ display_tags(post) }}
 
     <hr>
     <h3>Comments</h3>
@@ -11957,7 +11957,7 @@ Save and close the file.
 Now, navigate to a post page:
 
 ```
-http://127.0.0.1:5000/<^>2<^>
+http://127.0.0.1:5000/2
 ```
 
 You'll see that tags are displayed in the same way as the tags displayed on the index page.
@@ -11968,7 +11968,7 @@ You've displayed the tags you added to posts under each post. Next, you'll add a
 
 In this step, you'll add a route and a template to your web application to display the tags you have in your database and their posts.
 
-First, you'll add a route for displaying the posts of each tag. For example, the route `/tags/<^>tag_name<^>/` will show a page that displays all the posts tagged with a tag named `<^>tag_name<^>`.
+First, you'll add a route for displaying the posts of each tag. For example, the route `/tags/tag_name/` will show a page that displays all the posts tagged with a tag named `tag_name`.
 
 Open `app.py` for editing:
 
@@ -12045,7 +12045,7 @@ In the content block, you set a heading as a title with the tag name included. Y
 With your development server running, navigate to the following URL:
 
 ```
-http://127.0.0.1:5000/tags/<^>writing<^>/
+http://127.0.0.1:5000/tags/writing/
 ```
 
 This is the page for the `writing` tag. As you can see, all the posts that were tagged with `writing` are displayed:
@@ -12068,7 +12068,7 @@ Edit the `href` attribute's value as follows:
         <p>
             <h4>Tags:</h4>
             {% for tag in post.tags %}
-            <a href="<^>{{ url_for('tag', tag_name=tag.name) }}<^>"
+            <a href="{{ url_for('tag', tag_name=tag.name) }}"
                style="text-decoration: none; color: #dd5b5b">
                     {{ tag.name }}
                 </a>
@@ -12085,8 +12085,8 @@ Refresh the pages where the `display_tags()` macro has been used, and you'll see
 
 ```
 http://127.0.0.1:5000/
-http://127.0.0.1:5000/<^>2<^>/
-http://127.0.0.1:5000/tags/<^>writing<^>/
+http://127.0.0.1:5000/2/
+http://127.0.0.1:5000/tags/writing/
 ```
 
 As you can see, using Jinja macros allows you to reuse code, and editing a macro applies changes across multiple templates.
@@ -12191,7 +12191,7 @@ To construct a path for your database file, you define a base directory as the c
 
 You then create a Flask application instance called `app`, which you use to configure two Flask-SQLAlchemy [configuration keys](https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/):
 
-* `SQLALCHEMY_DATABASE_URI`: The database URI to specify the database you want to establish a connection with. In this case, the URI follows the format `sqlite:///<^>path/to/database.db<^>`. You use the [`os.path.join()`](https://docs.python.org/3.8/library/os.path.html#os.path.join) function to intelligently join the base directory you constructed and stored in the `basedir` variable with the `database.db` file name. This will connect to a `database.db` database file in your `flask_app` directory. The file will be created once you initiate the database.
+* `SQLALCHEMY_DATABASE_URI`: The database URI to specify the database you want to establish a connection with. In this case, the URI follows the format `sqlite:///path/to/database.db`. You use the [`os.path.join()`](https://docs.python.org/3.8/library/os.path.html#os.path.join) function to intelligently join the base directory you constructed and stored in the `basedir` variable with the `database.db` file name. This will connect to a `database.db` database file in your `flask_app` directory. The file will be created once you initiate the database.
 
 * `SQLALCHEMY_TRACK_MODIFICATIONS`: A configuration to enable or disable tracking modifications of objects. You set it to `False` to disable tracking, which uses less memory. For more, see [the configuration page](https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/) in the Flask-SQLAlchemy documentation.
 
@@ -12720,7 +12720,7 @@ mary = Employee.query.filter(Employee.firstname == 'Mary').all()
 print(mary)
 ```
 
-Here you use the syntax `<^>Model<^>.<^>column<^> == <^>value<^>` as an argument to the `filter()` method. The `filter_by()` method is a shortcut for this syntax.
+Here you use the syntax `Model.column == value` as an argument to the `filter()` method. The `filter_by()` method is a shortcut for this syntax.
 
 The result is the same as the result of the `filter_by()` method with the same condition:
 
@@ -12752,7 +12752,7 @@ print(out_of_office_employees)
 [<Employee Jane Tanaka>, <Employee Harold Ishida>]
 ```
 
-Here you use the `Employee.active <^>!=<^> True` condition to filter results.
+Here you use the `Employee.active != True` condition to filter results.
 
 ### Less Than
 
@@ -12789,7 +12789,7 @@ Age:  30
 Use the `<=` operator for records that are less than or equal to the given value. For example, to include employees aged 32 in the previous query:
 
 ```custom_prefix(>>>)
-employees_32_or_younger = Employee.query.filter(Employee.age <^><=<^>32).all()
+employees_32_or_younger = Employee.query.filter(Employee.age <=32).all()
 
 for employee in employees_32_or_younger:
     print(employee.firstname, employee.lastname)
@@ -12848,7 +12848,7 @@ Age:  52
 And the `>=` operator is for records that are greater than or equal to the given value. For example, you can again include 32-year-old employees in the previous query:
 
 ```custom_prefix(>>>)
-employees_32_or_older = Employee.query.filter(Employee.age <^>>=<^>32).all()
+employees_32_or_older = Employee.query.filter(Employee.age >=32).all()
 
 for employee in employees_32_or_older:
     print(employee.firstname, employee.lastname)
@@ -12887,7 +12887,7 @@ print(employees)
 [<Employee Mary Doe>, <Employee Alex Brown>, <Employee Emily Vill>, <Employee Mary Park>]
 ```
 
-Here, you use a condition with the syntax `<^>Model<^>.<^>column<^>.in_(<^>iterable<^>)`, where `<^>iterable<^>` is any type of [object you can iterate through](https://docs.python.org/3.8/glossary.html#term-iterable). For another example, you can use the `range()` Python function to get employees from a certain age range. The following query gets all the employees that are in their thirties.
+Here, you use a condition with the syntax `Model.column.in_(iterable)`, where `iterable` is any type of [object you can iterate through](https://docs.python.org/3.8/glossary.html#term-iterable). For another example, you can use the `range()` Python function to get employees from a certain age range. The following query gets all the employees that are in their thirties.
 
 ```custom_prefix(>>>)
 employees_in_30s = Employee.query.filter(Employee.age.in_(range(30, 40))).all()
@@ -12972,7 +12972,7 @@ print(active_and_32)
 [<Employee John Doe>]
 ```
 
-Here, you use the syntax `filter(db.and_(<^>condition1<^>, <^>condition2<^>))`.
+Here, you use the syntax `filter(db.and_(condition1, condition2))`.
 
 Using `all()` on the query returns a list of all the records that match the two conditions. You can use the `first()` method to get the first result:
 
@@ -13401,8 +13401,8 @@ To access different pages, you'll use _URL parameters_, also known as _URL query
 
 
 ```
-http://127.0.0.1:5000/?<^>page<^>=<^>1<^>
-http://127.0.0.1:5000/?<^>page<^>=<^>3<^>
+http://127.0.0.1:5000/?page=1
+http://127.0.0.1:5000/?page=3
 ```
 
 Here, the first URL passes a value `1` to the URL parameter `page`. The second URL passes a value `3` to the same parameter.
@@ -13418,13 +13418,13 @@ Edit the index route to look as follows:
 ```python
 @app.route('/')
 def index():
-    <^>page = request.args.get('page', 1, type=int)<^>
-    <^>pagination = Employee.query.order_by(Employee.firstname).paginate(<^>
-        <^>page, per_page=2)<^>
-    return render_template('index.html', <^>pagination=pagination<^>)
+    page = request.args.get('page', 1, type=int)
+    pagination = Employee.query.order_by(Employee.firstname).paginate(
+        page, per_page=2)
+    return render_template('index.html', pagination=pagination)
 ```
 
-Here, you get the value of the `page` URL parameter using the `request.args` object and its `get()` method. For example `/?<^>page<^>=<^>1<^>` will get the value `1` from the `<^>page<^>` URL parameter. You pass `1` as a default value, and you pass the `int` Python type as an argument to the `type` parameter to make sure the value is an integer.
+Here, you get the value of the `page` URL parameter using the `request.args` object and its `get()` method. For example `/?page=1` will get the value `1` from the `page` URL parameter. You pass `1` as a default value, and you pass the `int` Python type as an argument to the `type` parameter to make sure the value is an integer.
 
 Next you create a `pagination` object, ordering query results by the first name. You pass the `page` URL parameter value to the `paginate()` method, and you split results into two items per page by passing the value `2` to the `per_page` parameter.
 
@@ -13442,8 +13442,8 @@ Change the content `div` tag by adding an `h2` heading that indicates the curren
 
 ```html
 <div class="content">
-    <^><h2>(Page {{ pagination.page }})</h2><^>
-    {% for employee in <^>pagination.items<^> %}
+    <h2>(Page {{ pagination.page }})</h2>
+    {% for employee in pagination.items %}
         <div class="employee">
             <p><b>#{{ employee.id }}</b></p>
             <b>
@@ -13523,37 +13523,37 @@ Edit the file by adding the following highlighted `div` tag below the content `d
     {% endfor %}
 </div>
 
-<^><div class="pagination"><^>
-    <^>{% if pagination.has_prev %}<^>
-        <^><span><^>
-            <^><a class='page-number' href="{{ url_for('index', page=pagination.prev_num) }}"><^>
-                <^>{{ '<<<' }}<^>
-            <^></a><^>
-        <^></span><^>
-    <^>{% endif %}<^>
-<^><^>
-    <^>{% for number in pagination.iter_pages() %}<^>
-        <^>{% if pagination.page != number %}<^>
-            <^><span><^>
-                    <^><a class='page-number'<^>
-                        <^>href="{{ url_for('index', page=number) }}"><^>
-                    <^>{{ number }}<^>
-                    <^></a><^>
-            <^></span><^>
-        <^>{% else %}<^>
-            <^><span class='current-page-number'>{{ number }}</span><^>
-        <^>{% endif %}<^>
-    <^>{% endfor %}<^>
-<^><^>
-    <^>{% if pagination.has_next %}<^>
-        <^><span><^>
-            <^><a class='page-number'<^>
-                <^>href="{{ url_for('index', page=pagination.next_num) }}"><^>
-                <^>{{ '>>>' }}<^>
-            <^></a><^>
-        <^></span><^>
-    <^>{% endif %}<^>
-<^></div><^>
+<div class="pagination">
+    {% if pagination.has_prev %}
+        <span>
+            <a class='page-number' href="{{ url_for('index', page=pagination.prev_num) }}">
+                {{ '<<<' }}
+            </a>
+        </span>
+    {% endif %}
+
+    {% for number in pagination.iter_pages() %}
+        {% if pagination.page != number %}
+            <span>
+                    <a class='page-number'
+                        href="{{ url_for('index', page=number) }}">
+                    {{ number }}
+                    </a>
+            </span>
+        {% else %}
+            <span class='current-page-number'>{{ number }}</span>
+        {% endif %}
+    {% endfor %}
+
+    {% if pagination.has_next %}
+        <span>
+            <a class='page-number'
+                href="{{ url_for('index', page=pagination.next_num) }}">
+                {{ '>>>' }}
+            </a>
+        </span>
+    {% endif %}
+</div>
 ```
 Save and close the file.
 
@@ -13668,7 +13668,7 @@ In this step, you'll install the necessary packages for your application.
 In your `flask_app` directory, active your virtual environment:
 
 ```command
-source <^>my_env<^>/bin/activate
+source my_env/bin/activate
 ```
 
 With your virtual environment activated, use `pip` to install Flask and Flask-SQLAlchemy:
@@ -13720,7 +13720,7 @@ You use a class called `Config` and set configuration values using class variabl
 
 - `SECRET_KEY`: A long random string used by Flask as a _secret key_, or a key used to secure the sessions that remember information from one request to another. The user can access the information stored in the session but cannot modify it unless they have the secret key, so you must never allow anyone to access your secret key. See the [Flask documentation on sessions](https://flask.palletsprojects.com/en/2.2.x/api/#sessions) for more information. Other Flask extensions often use this secret key to secure data. See [Step 3 of How To Use Web Forms in a Flask Application](https://www.digitalocean.com/community/tutorials/how-to-use-web-forms-in-a-flask-application#step-3-handling-form-requests) for more information on how to create a secure secret key. When developing your Flask applications, you should set the secret key with an environment variable called `SECRET_KEY`. To get its value in this `config.py` file and save it in a class variable called `SECRET_KEY`, you access the environment variable's value via the [`os.environ`](https://docs.python.org/3/library/os.html#os.environ) object using its `get()` method. (Though you do not need to set a secret key to follow this tutorial, you can review the note at the end of this list for instructions on how to set a secret key.)
 
-- `SQLALCHEMY_DATABASE_URI`: The database URI specifies the database you want to establish a connection with using SQLAlchemy. In this case, you either get it from a `DATABASE_URI` environment variable or you set a default value. The default URI value here follows the format `sqlite:///<^>path/to/app.db<^>`. You use the `os.path.join()` function to join the base directory you constructed and stored in the `basedir` variable and the `app.db` file name. With this, creating a Flask application without setting a `DATABASE_URI` environment variable will connect to an `app.db` database file in your `flask_app` directory by default. The file will be created when you create your database tables. If you'd like to set a database URI for a different SQL engine, see [Step 2 of How to Use Flask-SQLAlchemy to Interact with Databases in a Flask Application](https://www.digitalocean.com/community/tutorials/how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application#step-2-setting-up-the-database-and-model).
+- `SQLALCHEMY_DATABASE_URI`: The database URI specifies the database you want to establish a connection with using SQLAlchemy. In this case, you either get it from a `DATABASE_URI` environment variable or you set a default value. The default URI value here follows the format `sqlite:///path/to/app.db`. You use the `os.path.join()` function to join the base directory you constructed and stored in the `basedir` variable and the `app.db` file name. With this, creating a Flask application without setting a `DATABASE_URI` environment variable will connect to an `app.db` database file in your `flask_app` directory by default. The file will be created when you create your database tables. If you'd like to set a database URI for a different SQL engine, see [Step 2 of How to Use Flask-SQLAlchemy to Interact with Databases in a Flask Application](https://www.digitalocean.com/community/tutorials/how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application#step-2-setting-up-the-database-and-model).
 
 - `SQLALCHEMY_TRACK_MODIFICATIONS`: A configuration to enable or disable tracking modifications of objects. You set it to `False` to disable tracking and use less memory. For more, you can read [the configuration page](https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/) in the Flask-SQLAlchemy documentation.
 
@@ -13728,13 +13728,13 @@ You use a class called `Config` and set configuration values using class variabl
 **Note:** You will not set a secret key in this tutorial because you will not use functionality that needs a secret key. However, if you need to set a secret key, you can set it as follows (for Windows, use `set` instead of `export`):
 
 ```custom_prefix((env)sammy@localhost:$)
-export SECRET_KEY="<^>your secret key<^>"
+export SECRET_KEY="your secret key"
 ```
 
 Similarly, you can set a database URI like so (use `set` on Windows):
 
 ```custom_prefix((env)sammy@localhost:$)
-export DATABASE_URI="postgresql://<^>username<^>:<^>password<^>@<^>host<^>:<^>port<^>/<^>database_name<^>"
+export DATABASE_URI="postgresql://username:password@host:port/database_name"
 ```
 <$>
 
@@ -13922,7 +13922,7 @@ from flask import Blueprint
 
 bp = Blueprint('main', __name__)
 
-<^>from app.main import routes<^>
+from app.main import routes
 ```
 
 Save and close the file.
@@ -13949,8 +13949,8 @@ def create_app(config_class=Config):
     # Initialize Flask extensions here
 
     # Register blueprints here
-    <^>from app.main import bp as main_bp<^>
-    <^>app.register_blueprint(main_bp)<^>
+    from app.main import bp as main_bp
+    app.register_blueprint(main_bp)
 
     @app.route('/test/')
     def test_page():
@@ -13982,12 +13982,12 @@ Edit the file with the highlighted lines:
 
 ```python
 [label flask_app/app/main/routes.py]
-<^>from flask import render_template<^>
+from flask import render_template
 from app.main import bp
 
 @bp.route('/')
 def index():
-    return <^>render_template('index.html')<^>
+    return render_template('index.html')
 ```
 
 Save and close the file.
@@ -14078,7 +14078,7 @@ This base template features HTML boilerplate that you will reuse in your other t
 
 The base template has a title block, some CSS, a navigation bar to link to different parts of your application, and a content block. For more on base templates, see [How To Use Templates in a Flask Application](https://www.digitalocean.com/community/tutorials/how-to-use-templates-in-a-flask-application).
 
-You use the syntax `<^>blueprint_name<^>.<^>view_function_name<^>` to link to a route when using the `url_for()` function with blueprints. The index page is handled by the `index()` view function in the main blueprint; therefore, you pass `main.index` to the `url_for()` function to build a link.
+You use the syntax `blueprint_name.view_function_name` to link to a route when using the `url_for()` function with blueprints. The index page is handled by the `index()` view function in the main blueprint; therefore, you pass `main.index` to the `url_for()` function to build a link.
 
 Now, create the `index.html` file you rendered in the `index()` view function of the main blueprint:
 
@@ -14273,8 +14273,8 @@ def create_app(config_class=Config):
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
 
-    <^>from app.posts import bp as posts_bp<^>
-    <^>app.register_blueprint(posts_bp, url_prefix='/posts')<^>
+    from app.posts import bp as posts_bp
+    app.register_blueprint(posts_bp, url_prefix='/posts')
 
     @app.route('/test/')
     def test_page():
@@ -14310,8 +14310,8 @@ Modify the `<nav>` tag with the highlighted expressions:
 [label flask_app/app/templates/base.html]
     <nav>
         <a href="{{ url_for('main.index') }}">FlaskApp</a>
-        <a href="<^>{{ url_for('posts.index') }}<^>">Posts</a>
-        <a href="<^>{{ url_for('posts.categories') }}<^>">Categories</a>
+        <a href="{{ url_for('posts.index') }}">Posts</a>
+        <a href="{{ url_for('posts.categories') }}">Categories</a>
         <a href="#">Questions</a>
     </nav>
 ```
@@ -14449,8 +14449,8 @@ def create_app(config_class=Config):
     from app.posts import bp as posts_bp
     app.register_blueprint(posts_bp, url_prefix='/posts')
 
-    <^>from app.questions import bp as questions_bp<^>
-    <^>app.register_blueprint(questions_bp, url_prefix='/questions')<^>
+    from app.questions import bp as questions_bp
+    app.register_blueprint(questions_bp, url_prefix='/questions')
 
     @app.route('/test/')
     def test_page():
@@ -14485,7 +14485,7 @@ Modify the `<nav>` tag with the highlighted expression:
         <a href="{{ url_for('main.index') }}">FlaskApp</a>
         <a href="{{ url_for('posts.index') }}">Posts</a>
         <a href="{{ url_for('posts.categories') }}">Categories</a>
-        <a href="<^>{{ url_for('questions.index') }}<^>">Questions</a>
+        <a href="{{ url_for('questions.index') }}">Questions</a>
     </nav>
 ```
 
@@ -14563,14 +14563,14 @@ Edit the file to import and initialize the database object:
 from flask import Flask
 
 from config import Config
-<^>from app.extensions import db<^>
+from app.extensions import db
 
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
     # Initialize Flask extensions here
-    <^>db.init_app(app)<^>
+    db.init_app(app)
 
     # Register blueprints here
     from app.main import bp as main_bp
@@ -14636,7 +14636,7 @@ You'll receive the path of your database, similar to the following:
 
 ```
 [secondary_label Output]
-<SQLAlchemy engine=sqlite:///<^>your_path_to_flask_app<^>/app.db>
+<SQLAlchemy engine=sqlite:///your_path_to_flask_app/app.db>
 ```
 
 This output means that the `db` object was properly registered. If you get an error running the code in the Flask shell, ensure you've correctly registered the `db` object in your factory function before moving to the next section. You can exit the Flask shell by typing `exit()`.
@@ -14807,14 +14807,14 @@ Edit the imports and the index route by adding the highlighted lines:
 [label flask_app/app/posts/routes.py]
 from flask import render_template
 from app.posts import bp
-<^>from app.extensions import db<^>
-<^>from app.models.post import Post<^>
+from app.extensions import db
+from app.models.post import Post
 
 
 @bp.route('/')
 def index():
-    <^>posts = Post.query.all()<^>
-    return render_template('posts/index.html'<^>, posts=posts<^>)
+    posts = Post.query.all()
+    return render_template('posts/index.html', posts=posts)
 ```
 
 Save and close the file.
@@ -14837,22 +14837,22 @@ Edit the file by adding the highlighted lines:
     <span class="title"><h1>{% block title %} The Posts Page {% endblock %}</h1></span>
     <div class="content">
         <h2>This is the posts Flask blueprint</h2>
-        <^>{% for post in posts %}<^>
-            <^><div class="post"><^>
-                <^><p><b>#{{ post.id }}</b></p><^>
-                <^><p class="title"><^>
-                    <^><b><^>
-                        <^><a href="#"><^>
-                            <^>{{ post.title }}<^>
-                        <^></a><^>
-                    <^></b><^>
-                <^></p><^>
-                <^><div class="content"><^>
-                    <^><p>{{ post.content }}</p><^>
-                <^></div><^>
-                <^><hr><^>
-            <^></div><^>
-        <^>{% endfor %}<^>
+        {% for post in posts %}
+            <div class="post">
+                <p><b>#{{ post.id }}</b></p>
+                <p class="title">
+                    <b>
+                        <a href="#">
+                            {{ post.title }}
+                        </a>
+                    </b>
+                </p>
+                <div class="content">
+                    <p>{{ post.content }}</p>
+                </div>
+                <hr>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
 ```
@@ -14974,12 +14974,12 @@ Edit the file by adding the highlighted lines:
 [label flask_app/app/questions/routes.py]
 from flask import render_template
 from app.questions import bp
-<^>from app.models.question import Question<^>
+from app.models.question import Question
 
 @bp.route('/')
 def index():
-    <^>questions = Question.query.all()<^>
-    return render_template('questions/index.html'<^>, questions=questions<^>)
+    questions = Question.query.all()
+    return render_template('questions/index.html', questions=questions)
 ```
 
 Save and close the file.
@@ -15005,32 +15005,32 @@ Edit the file by adding the highlighted lines:
     <div class="questions">
         <h2>Questions Blueprint</h2>
 
-        <^><div class="question"><^>
-            <^><div class="new-question"><^>
-                <^><form method="POST"><^>
-                    <^><p><^>
-                        <^><textarea id="q-content"<^>
-                                <^>name="content"<^>
-                                <^>placeholder="Question"<^>
-                                <^>cols="30" rows="3"></textarea><^>
-                    <^></p><^>
-                    <^><textarea id="q-answer"<^>
-                            <^>name="answer"<^>
-                            <^>placeholder="Answer"<^>
-                            <^>cols="30" rows="3"></textarea><^>
-                    <^><p><input type="submit"></p><^>
-                <^></form><^>
-            <^></div><^>
-            <^><div class="questions-list"><^>
-                <^>{% for question in questions %}<^>
-                    <^><div class="question"><^>
-                        <^><h4>{{ question.content }}</h4><^>
-                        <^><p>{{ question.answer }}</p><^>
-                        <^><hr><^>
-                    <^></div><^>
-                <^>{% endfor %}<^>
-            <^></div><^>
-        <^></div><^>
+        <div class="question">
+            <div class="new-question">
+                <form method="POST">
+                    <p>
+                        <textarea id="q-content"
+                                name="content"
+                                placeholder="Question"
+                                cols="30" rows="3"></textarea>
+                    </p>
+                    <textarea id="q-answer"
+                            name="answer"
+                            placeholder="Answer"
+                            cols="30" rows="3"></textarea>
+                    <p><input type="submit"></p>
+                </form>
+            </div>
+            <div class="questions-list">
+                {% for question in questions %}
+                    <div class="question">
+                        <h4>{{ question.content }}</h4>
+                        <p>{{ question.answer }}</p>
+                        <hr>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
 
     </div>
 {% endblock %}
@@ -15064,21 +15064,21 @@ Edit the file by adding the highlighted lines:
 
 ```python
 [label flask_app/app/questions/routes.py]
-from flask import render_template<^>, request, url_for, redirect<^>
+from flask import render_template, request, url_for, redirect
 from app.questions import bp
 from app.models.question import Question
-<^>from app.extensions import db<^>
+from app.extensions import db
 
-@bp.route('/'<^>, methods=('GET', 'POST')<^>)
+@bp.route('/', methods=('GET', 'POST'))
 def index():
     questions = Question.query.all()
 
-    <^>if request.method == 'POST':<^>
-        <^>new_question = Question(content=request.form['content'],<^>
-                                <^>answer=request.form['answer'])<^>
-        <^>db.session.add(new_question)<^>
-        <^>db.session.commit()<^>
-        <^>return redirect(url_for('questions.index'))<^>
+    if request.method == 'POST':
+        new_question = Question(content=request.form['content'],
+                                answer=request.form['answer'])
+        db.session.add(new_question)
+        db.session.commit()
+        return redirect(url_for('questions.index'))
 
     return render_template('questions/index.html', questions=questions)
 ```
