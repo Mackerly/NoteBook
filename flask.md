@@ -1,152 +1,152 @@
 - [How To Create Your First Web Application Using Flask and Python 3](#how-to-create-your-first-web-application-using-flask-and-python-3)
-  - [Introduction](#introduction)
-- [Prerequisites](#prerequisites)
-- [Step 1 — Installing Flask](#step-1--installing-flask)
-- [Step 2 — Creating a Simple Application](#step-2--creating-a-simple-application)
-- [Step 3 — Running the Application](#step-3--running-the-application)
-- [Step 4 — Routes and View Functions](#step-4--routes-and-view-functions)
-- [Step 5 — Dynamic Routes](#step-5--dynamic-routes)
-- [Step 6 — Debugging A Flask Application](#step-6--debugging-a-flask-application)
-- [Conclusion](#conclusion)
+    - [Introduction](#introduction)
+  - [Prerequisites](#prerequisites)
+  - [Step 1 — Installing Flask](#step-1--installing-flask)
+  - [Step 2 — Creating a Simple Application](#step-2--creating-a-simple-application)
+  - [Step 3 — Running the Application](#step-3--running-the-application)
+  - [Step 4 — Routes and View Functions](#step-4--routes-and-view-functions)
+  - [Step 5 — Dynamic Routes](#step-5--dynamic-routes)
+  - [Step 6 — Debugging A Flask Application](#step-6--debugging-a-flask-application)
+  - [Conclusion](#conclusion)
 - [How To Use Templates in a Flask Application](#how-to-use-templates-in-a-flask-application)
-  - [Introduction](#introduction-1)
-- [Prerequisites](#prerequisites-1)
-- [Step 1 — Rendering a Template and Using Variables](#step-1--rendering-a-template-and-using-variables)
-- [Step 2 — Using Template Inheritance](#step-2--using-template-inheritance)
-- [Step 3 — Linking between Pages](#step-3--linking-between-pages)
-- [Step 4 — Using Conditionals and Loops](#step-4--using-conditionals-and-loops)
-- [Step 5 — Using Filters](#step-5--using-filters)
-- [Step 6 — Integrating Bootstrap](#step-6--integrating-bootstrap)
-- [Conclusion](#conclusion-1)
+    - [Introduction](#introduction-1)
+  - [Prerequisites](#prerequisites-1)
+  - [Step 1 — Rendering a Template and Using Variables](#step-1--rendering-a-template-and-using-variables)
+  - [Step 2 — Using Template Inheritance](#step-2--using-template-inheritance)
+  - [Step 3 — Linking between Pages](#step-3--linking-between-pages)
+  - [Step 4 — Using Conditionals and Loops](#step-4--using-conditionals-and-loops)
+  - [Step 5 — Using Filters](#step-5--using-filters)
+  - [Step 6 — Integrating Bootstrap](#step-6--integrating-bootstrap)
+  - [Conclusion](#conclusion-1)
 - [How To Handle Errors in a Flask Application](#how-to-handle-errors-in-a-flask-application)
-  - [Introduction](#introduction-2)
-- [Prerequisites](#prerequisites-2)
-- [Step 1 — Using The Flask Debugger](#step-1--using-the-flask-debugger)
-- [Step 2 — Creating Custom Error Pages](#step-2--creating-custom-error-pages)
-- [Step 3 — Using Logging to Track Events in Your Application](#step-3--using-logging-to-track-events-in-your-application)
-- [Conclusion](#conclusion-2)
+    - [Introduction](#introduction-2)
+  - [Prerequisites](#prerequisites-2)
+  - [Step 1 — Using The Flask Debugger](#step-1--using-the-flask-debugger)
+  - [Step 2 — Creating Custom Error Pages](#step-2--creating-custom-error-pages)
+  - [Step 3 — Using Logging to Track Events in Your Application](#step-3--using-logging-to-track-events-in-your-application)
+  - [Conclusion](#conclusion-2)
 - [How To Use Web Forms in a Flask Application](#how-to-use-web-forms-in-a-flask-application)
-  - [Introduction](#introduction-3)
-- [Prerequisites](#prerequisites-3)
-- [Step 1 — Displaying Messages](#step-1--displaying-messages)
-- [Step 2 — Setting Up Forms](#step-2--setting-up-forms)
-- [Step 3 — Handling Form Requests](#step-3--handling-form-requests)
-- [Conclusion](#conclusion-3)
+    - [Introduction](#introduction-3)
+  - [Prerequisites](#prerequisites-3)
+  - [Step 1 — Displaying Messages](#step-1--displaying-messages)
+  - [Step 2 — Setting Up Forms](#step-2--setting-up-forms)
+  - [Step 3 — Handling Form Requests](#step-3--handling-form-requests)
+  - [Conclusion](#conclusion-3)
 - [How To Use and Validate Web Forms with Flask-WTF](#how-to-use-and-validate-web-forms-with-flask-wtf)
-  - [Introduction](#introduction-4)
-- [Prerequisites](#prerequisites-4)
-- [Step 1 — Installing Flask and Flask-WTF](#step-1--installing-flask-and-flask-wtf)
-- [Step 2 — Setting up Forms](#step-2--setting-up-forms-1)
-- [Step 3 — Displaying the Web Form and Courses](#step-3--displaying-the-web-form-and-courses)
-- [Step 4 — Accessing Form Data](#step-4--accessing-form-data)
-- [Conclusion](#conclusion-4)
+    - [Introduction](#introduction-4)
+  - [Prerequisites](#prerequisites-4)
+  - [Step 1 — Installing Flask and Flask-WTF](#step-1--installing-flask-and-flask-wtf)
+  - [Step 2 — Setting up Forms](#step-2--setting-up-forms-1)
+  - [Step 3 — Displaying the Web Form and Courses](#step-3--displaying-the-web-form-and-courses)
+  - [Step 4 — Accessing Form Data](#step-4--accessing-form-data)
+  - [Conclusion](#conclusion-4)
 - [How To Use an SQLite Database in a Flask Application](#how-to-use-an-sqlite-database-in-a-flask-application)
-  - [Introduction](#introduction-5)
-- [Prerequisites](#prerequisites-5)
-- [Step 1 — Setting up the Database](#step-1--setting-up-the-database)
-- [Step 2 — Displaying Posts](#step-2--displaying-posts)
-- [Step 3 — Creating Posts](#step-3--creating-posts)
-- [Step 4 — Editing Posts](#step-4--editing-posts)
-- [Step 5 — Deleting Posts](#step-5--deleting-posts)
-- [Conclusion](#conclusion-5)
+    - [Introduction](#introduction-5)
+  - [Prerequisites](#prerequisites-5)
+  - [Step 1 — Setting up the Database](#step-1--setting-up-the-database)
+  - [Step 2 — Displaying Posts](#step-2--displaying-posts)
+  - [Step 3 — Creating Posts](#step-3--creating-posts)
+  - [Step 4 — Editing Posts](#step-4--editing-posts)
+  - [Step 5 — Deleting Posts](#step-5--deleting-posts)
+  - [Conclusion](#conclusion-5)
 - [How To Use a PostgreSQL Database in a Flask Application](#how-to-use-a-postgresql-database-in-a-flask-application)
-  - [Introduction](#introduction-6)
-- [Prerequisites](#prerequisites-6)
-- [Step 1 — Creating the PostgreSQL Database and User](#step-1--creating-the-postgresql-database-and-user)
-- [Step 2 — Installing Flask and psycopg2](#step-2--installing-flask-and-psycopg2)
-- [Step 3 — Setting up a Database](#step-3--setting-up-a-database)
-- [Step 4 — Displaying Books](#step-4--displaying-books)
-- [Step 5 — Adding New Books](#step-5--adding-new-books)
-- [Conclusion](#conclusion-6)
+    - [Introduction](#introduction-6)
+  - [Prerequisites](#prerequisites-6)
+  - [Step 1 — Creating the PostgreSQL Database and User](#step-1--creating-the-postgresql-database-and-user)
+  - [Step 2 — Installing Flask and psycopg2](#step-2--installing-flask-and-psycopg2)
+  - [Step 3 — Setting up a Database](#step-3--setting-up-a-database)
+  - [Step 4 — Displaying Books](#step-4--displaying-books)
+  - [Step 5 — Adding New Books](#step-5--adding-new-books)
+  - [Conclusion](#conclusion-6)
 - [How To Use MongoDB in a Flask Application](#how-to-use-mongodb-in-a-flask-application)
-  - [Introduction](#introduction-7)
-- [Prerequisites](#prerequisites-7)
-- [Step 1 — Setting Up PyMongo and Flask](#step-1--setting-up-pymongo-and-flask)
-- [Step 2 — Connecting to the MongoDB Server and Creating a Collection](#step-2--connecting-to-the-mongodb-server-and-creating-a-collection)
-- [Step 3 — Creating a Web Page for Adding and Displaying Todos](#step-3--creating-a-web-page-for-adding-and-displaying-todos)
-- [Step 4 — Deleting Todos](#step-4--deleting-todos)
-- [Conclusion](#conclusion-7)
+    - [Introduction](#introduction-7)
+  - [Prerequisites](#prerequisites-7)
+  - [Step 1 — Setting Up PyMongo and Flask](#step-1--setting-up-pymongo-and-flask)
+  - [Step 2 — Connecting to the MongoDB Server and Creating a Collection](#step-2--connecting-to-the-mongodb-server-and-creating-a-collection)
+  - [Step 3 — Creating a Web Page for Adding and Displaying Todos](#step-3--creating-a-web-page-for-adding-and-displaying-todos)
+  - [Step 4 — Deleting Todos](#step-4--deleting-todos)
+  - [Conclusion](#conclusion-7)
 - [How to Use Flask-SQLAlchemy to Interact with Databases in a Flask Application](#how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application)
-  - [Introduction](#introduction-8)
-- [Prerequisites](#prerequisites-8)
-- [Step 1 — Installing Flask and Flask-SQLAlchemy](#step-1--installing-flask-and-flask-sqlalchemy)
-- [Step 2 — Setting up the Database and Model](#step-2--setting-up-the-database-and-model)
-  - [Setting up The Database Connection](#setting-up-the-database-connection)
-  - [Declaring The Table](#declaring-the-table)
-  - [Creating the Database](#creating-the-database)
-  - [Populating the Table](#populating-the-table)
-- [Step 3 — Displaying All Records](#step-3--displaying-all-records)
-- [Step 4 — Displaying a Single Record](#step-4--displaying-a-single-record)
-- [Step 5 — Creating a New Record](#step-5--creating-a-new-record)
-- [Step 6 — Editing a Record](#step-6--editing-a-record)
-- [Step 7 — Deleting a Record](#step-7--deleting-a-record)
-- [Conclusion](#conclusion-8)
+    - [Introduction](#introduction-8)
+  - [Prerequisites](#prerequisites-8)
+  - [Step 1 — Installing Flask and Flask-SQLAlchemy](#step-1--installing-flask-and-flask-sqlalchemy)
+  - [Step 2 — Setting up the Database and Model](#step-2--setting-up-the-database-and-model)
+    - [Setting up The Database Connection](#setting-up-the-database-connection)
+    - [Declaring The Table](#declaring-the-table)
+    - [Creating the Database](#creating-the-database)
+    - [Populating the Table](#populating-the-table)
+  - [Step 3 — Displaying All Records](#step-3--displaying-all-records)
+  - [Step 4 — Displaying a Single Record](#step-4--displaying-a-single-record)
+  - [Step 5 — Creating a New Record](#step-5--creating-a-new-record)
+  - [Step 6 — Editing a Record](#step-6--editing-a-record)
+  - [Step 7 — Deleting a Record](#step-7--deleting-a-record)
+  - [Conclusion](#conclusion-8)
 - [How to Use One-to-Many Database Relationships with Flask-SQLAlchemy](#how-to-use-one-to-many-database-relationships-with-flask-sqlalchemy)
-  - [Introduction](#introduction-9)
-- [Prerequisites](#prerequisites-9)
-- [Step 1 — Installing Flask and Flask-SQLAlchemy](#step-1--installing-flask-and-flask-sqlalchemy-1)
-- [Step 2 — Setting up the Database and Models](#step-2--setting-up-the-database-and-models)
-  - [Setting up The Database Connection](#setting-up-the-database-connection-1)
-  - [Declaring The Tables](#declaring-the-tables)
-  - [Creating the Database](#creating-the-database-1)
-  - [Populating the Tables](#populating-the-tables)
-- [Step 3 — Displaying All Posts](#step-3--displaying-all-posts)
-- [Step 4 — Displaying a Single Post and its Comments](#step-4--displaying-a-single-post-and-its-comments)
-- [Step 5 — Adding New Comments](#step-5--adding-new-comments)
-- [Step 6 — Displaying All Comments](#step-6--displaying-all-comments)
-- [Step 7 — Deleting Comments](#step-7--deleting-comments)
-- [Conclusion](#conclusion-9)
+    - [Introduction](#introduction-9)
+  - [Prerequisites](#prerequisites-9)
+  - [Step 1 — Installing Flask and Flask-SQLAlchemy](#step-1--installing-flask-and-flask-sqlalchemy-1)
+  - [Step 2 — Setting up the Database and Models](#step-2--setting-up-the-database-and-models)
+    - [Setting up The Database Connection](#setting-up-the-database-connection-1)
+    - [Declaring The Tables](#declaring-the-tables)
+    - [Creating the Database](#creating-the-database-1)
+    - [Populating the Tables](#populating-the-tables)
+  - [Step 3 — Displaying All Posts](#step-3--displaying-all-posts)
+  - [Step 4 — Displaying a Single Post and its Comments](#step-4--displaying-a-single-post-and-its-comments)
+  - [Step 5 — Adding New Comments](#step-5--adding-new-comments)
+  - [Step 6 — Displaying All Comments](#step-6--displaying-all-comments)
+  - [Step 7 — Deleting Comments](#step-7--deleting-comments)
+  - [Conclusion](#conclusion-9)
 - [How To Use Many-to-Many Database Relationships with Flask-SQLAlchemy](#how-to-use-many-to-many-database-relationships-with-flask-sqlalchemy)
-  - [Introduction](#introduction-10)
-- [Prerequisites](#prerequisites-10)
-- [Step 1 — Setting Up the Web Application](#step-1--setting-up-the-web-application)
-- [Step 2 — Setting up Database Models for a Many-to-Many Relationship](#step-2--setting-up-database-models-for-a-many-to-many-relationship)
-- [Step 3 — Managing Data in a Many-to-Many Relationship](#step-3--managing-data-in-a-many-to-many-relationship)
-- [Step 4 — Displaying Tags Under Each Post](#step-4--displaying-tags-under-each-post)
-- [Step 5 — Displaying Tags and Their Posts](#step-5--displaying-tags-and-their-posts)
-- [Conclusion](#conclusion-10)
+    - [Introduction](#introduction-10)
+  - [Prerequisites](#prerequisites-10)
+  - [Step 1 — Setting Up the Web Application](#step-1--setting-up-the-web-application)
+  - [Step 2 — Setting up Database Models for a Many-to-Many Relationship](#step-2--setting-up-database-models-for-a-many-to-many-relationship)
+  - [Step 3 — Managing Data in a Many-to-Many Relationship](#step-3--managing-data-in-a-many-to-many-relationship)
+  - [Step 4 — Displaying Tags Under Each Post](#step-4--displaying-tags-under-each-post)
+  - [Step 5 — Displaying Tags and Their Posts](#step-5--displaying-tags-and-their-posts)
+  - [Conclusion](#conclusion-10)
 - [How To Query Tables and Paginate Data in Flask-SQLAlchemy](#how-to-query-tables-and-paginate-data-in-flask-sqlalchemy)
-  - [Introduction](#introduction-11)
-- [Prerequisites](#prerequisites-11)
-- [Step 1 — Setting up the Database and Model](#step-1--setting-up-the-database-and-model)
-- [Step 2 — Querying Records](#step-2--querying-records)
-  - [Retrieving All Records](#retrieving-all-records)
-  - [Retrieving the First Record](#retrieving-the-first-record)
-  - [Retrieving a Record by ID](#retrieving-a-record-by-id)
-  - [Retrieving a Record or Multiple Records by a Column Value](#retrieving-a-record-or-multiple-records-by-a-column-value)
-- [Step 3 — Filtering Records Using Logical Conditions](#step-3--filtering-records-using-logical-conditions)
-  - [Equals](#equals)
-  - [Not Equals](#not-equals)
-  - [Less Than](#less-than)
-  - [Greater Than](#greater-than)
-  - [In](#in)
-  - [Not In](#not-in)
-  - [And](#and)
-  - [Or](#or)
-- [Step 4 — Ordering, Limiting, and Counting Results](#step-4--ordering-limiting-and-counting-results)
-  - [Ordering Results](#ordering-results)
-  - [Limiting Results](#limiting-results)
-  - [Counting Results](#counting-results)
-- [Step 5 — Displaying Long Record Lists on Multiple Pages](#step-5--displaying-long-record-lists-on-multiple-pages)
-- [Conclusion](#conclusion-11)
+    - [Introduction](#introduction-11)
+  - [Prerequisites](#prerequisites-11)
+  - [Step 1 — Setting up the Database and Model](#step-1--setting-up-the-database-and-model)
+  - [Step 2 — Querying Records](#step-2--querying-records)
+    - [Retrieving All Records](#retrieving-all-records)
+    - [Retrieving the First Record](#retrieving-the-first-record)
+    - [Retrieving a Record by ID](#retrieving-a-record-by-id)
+    - [Retrieving a Record or Multiple Records by a Column Value](#retrieving-a-record-or-multiple-records-by-a-column-value)
+  - [Step 3 — Filtering Records Using Logical Conditions](#step-3--filtering-records-using-logical-conditions)
+    - [Equals](#equals)
+    - [Not Equals](#not-equals)
+    - [Less Than](#less-than)
+    - [Greater Than](#greater-than)
+    - [In](#in)
+    - [Not In](#not-in)
+    - [And](#and)
+    - [Or](#or)
+  - [Step 4 — Ordering, Limiting, and Counting Results](#step-4--ordering-limiting-and-counting-results)
+    - [Ordering Results](#ordering-results)
+    - [Limiting Results](#limiting-results)
+    - [Counting Results](#counting-results)
+  - [Step 5 — Displaying Long Record Lists on Multiple Pages](#step-5--displaying-long-record-lists-on-multiple-pages)
+  - [Conclusion](#conclusion-11)
 - [How To Structure a Large Flask Application with Flask Blueprints and Flask-SQLAlchemy](#how-to-structure-a-large-flask-application-with-flask-blueprints-and-flask-sqlalchemy)
-  - [Introduction](#introduction-12)
-- [Prerequisites](#prerequisites-12)
-- [The Target Application Structure](#the-target-application-structure)
-- [Step 1 — Installing Flask and Flask-SQLAlchemy](#step-1--installing-flask-and-flask-sqlalchemy-2)
-- [Step 2 — Creating a Configuration File](#step-2--creating-a-configuration-file)
-- [Step 3 — Creating a Flask Application Factory](#step-3--creating-a-flask-application-factory)
-- [Step 4 — Creating Flask Blueprints](#step-4--creating-flask-blueprints)
-  - [Creating the Main Blueprint and Rendering its Templates](#creating-the-main-blueprint-and-rendering-its-templates)
-  - [Creating the Posts Blueprint and Rendering its Templates](#creating-the-posts-blueprint-and-rendering-its-templates)
-  - [Creating the Questions Blueprint and Rendering its Templates](#creating-the-questions-blueprint-and-rendering-its-templates)
-- [Step 5 — Adding Flask-SQLAlchemy Models to your Flask Application](#step-5--adding-flask-sqlalchemy-models-to-your-flask-application)
-  - [Creating a File for Managing Flask Extensions and Integrating Flask-SQLAlchemy](#creating-a-file-for-managing-flask-extensions-and-integrating-flask-sqlalchemy)
-  - [Creating and Interacting with the Post Model](#creating-and-interacting-with-the-post-model)
-  - [Creating and Interacting with the Question Model](#creating-and-interacting-with-the-question-model)
-- [Conclusion](#conclusion-12)
+    - [Introduction](#introduction-12)
+  - [Prerequisites](#prerequisites-12)
+  - [The Target Application Structure](#the-target-application-structure)
+  - [Step 1 — Installing Flask and Flask-SQLAlchemy](#step-1--installing-flask-and-flask-sqlalchemy-2)
+  - [Step 2 — Creating a Configuration File](#step-2--creating-a-configuration-file)
+  - [Step 3 — Creating a Flask Application Factory](#step-3--creating-a-flask-application-factory)
+  - [Step 4 — Creating Flask Blueprints](#step-4--creating-flask-blueprints)
+    - [Creating the Main Blueprint and Rendering its Templates](#creating-the-main-blueprint-and-rendering-its-templates)
+    - [Creating the Posts Blueprint and Rendering its Templates](#creating-the-posts-blueprint-and-rendering-its-templates)
+    - [Creating the Questions Blueprint and Rendering its Templates](#creating-the-questions-blueprint-and-rendering-its-templates)
+  - [Step 5 — Adding Flask-SQLAlchemy Models to your Flask Application](#step-5--adding-flask-sqlalchemy-models-to-your-flask-application)
+    - [Creating a File for Managing Flask Extensions and Integrating Flask-SQLAlchemy](#creating-a-file-for-managing-flask-extensions-and-integrating-flask-sqlalchemy)
+    - [Creating and Interacting with the Post Model](#creating-and-interacting-with-the-post-model)
+    - [Creating and Interacting with the Question Model](#creating-and-interacting-with-the-question-model)
+  - [Conclusion](#conclusion-12)
 
-## How To Create Your First Web Application Using Flask and Python 3
+# How To Create Your First Web Application Using Flask and Python 3
 
 *The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program.*
 
@@ -1076,7 +1076,7 @@ If you would like to read more about Flask, check out the [Flask topic page](htt
 
 
 
-## How To Use Templates in a Flask Application
+# How To Use Templates in a Flask Application
 
 *The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program.*
 
@@ -2816,7 +2816,7 @@ If you would like to read more about Flask, check out the [Flask topic page](htt
 
 
 
-## How To Handle Errors in a Flask Application
+# How To Handle Errors in a Flask Application
 
 *The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program.*
 
@@ -4058,7 +4058,7 @@ If you would like to read more about Flask, check out [the Flask topic page](htt
 
 
 
-## How To Use Web Forms in a Flask Application
+# How To Use Web Forms in a Flask Application
 
 _The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program._
 
@@ -4918,7 +4918,7 @@ If you would like to read more about Flask, check out [the other tutorials in th
 
 
 
-## How To Use and Validate Web Forms with Flask-WTF
+# How To Use and Validate Web Forms with Flask-WTF
 
 *The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program.*
 
@@ -5924,7 +5924,7 @@ If you would like to read more about Flask, check out the other tutorials in the
 
 
 
-## How To Use an SQLite Database in a Flask Application
+# How To Use an SQLite Database in a Flask Application
 
 _The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program._
 
@@ -7416,7 +7416,7 @@ If you would like to read more about Flask, check out [the other tutorials in th
 
 
 
-## How To Use a PostgreSQL Database in a Flask Application
+# How To Use a PostgreSQL Database in a Flask Application
 
 _The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program._
 
@@ -8682,7 +8682,7 @@ If you would like to read more about Flask, check out the other tutorials in [th
 
 
 
-## How To Use MongoDB in a Flask Application
+# How To Use MongoDB in a Flask Application
 
 *The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program.*
 
@@ -9123,7 +9123,7 @@ For more on MongoDB, see our [How To Manage Data with MongoDB](https://www.digit
 
 
 
-## How to Use Flask-SQLAlchemy to Interact with Databases in a Flask Application
+# How to Use Flask-SQLAlchemy to Interact with Databases in a Flask Application
 
 *The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program.*
 
@@ -10265,7 +10265,7 @@ If you would like to read more about Flask, check out the other tutorials in the
 
 
 
-## How to Use One-to-Many Database Relationships with Flask-SQLAlchemy
+# How to Use One-to-Many Database Relationships with Flask-SQLAlchemy
 
 *The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program.*
 
@@ -11154,7 +11154,7 @@ If you would like to read more about Flask, check out the other tutorials in the
 
 
 
-## How To Use Many-to-Many Database Relationships with Flask-SQLAlchemy
+# How To Use Many-to-Many Database Relationships with Flask-SQLAlchemy
 
 *The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program.*
 
@@ -12102,7 +12102,7 @@ If you would like to read more about Flask, check out the other tutorials in the
 
 
 
-## How To Query Tables and Paginate Data in Flask-SQLAlchemy
+# How To Query Tables and Paginate Data in Flask-SQLAlchemy
 
 *The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program.*
 
@@ -13591,7 +13591,7 @@ If you would like to read more about Flask, check out the other tutorials in the
 
 
 
-## How To Structure a Large Flask Application with Flask Blueprints and Flask-SQLAlchemy
+# How To Structure a Large Flask Application with Flask Blueprints and Flask-SQLAlchemy
 
 *The author selected the [Free and Open Source Fund](https://www.brightfunds.org/funds/foss-nonprofits) to receive a donation as part of the [Write for DOnations](https://do.co/w4do-cta) program.*
 
@@ -15108,4 +15108,3 @@ The example web application now has three major components that can be expanded 
 You can also add more blueprints for features such as authentication, payments, administration, and more.
 
 If you want to read more about Flask, check out the other tutorials in the [How To Build Web Applications with Flask](https://www.digitalocean.com/community/tutorial_series/how-to-create-web-sites-with-flask) series.
-
