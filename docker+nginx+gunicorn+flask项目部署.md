@@ -65,6 +65,7 @@ if __name__ == '__main__':
  * Running on http://0.0.0.0:2021/ (Press CTRL+C to quit)
 ```
 此时可以在外部浏览器上访问这个地址，端口号为2021：
+
 ![这是图片](./images/1.webp "Magic Gardens")
 
 ### gunicorn部署flask项目
@@ -175,7 +176,9 @@ lla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/
 
 ### gunicorn+nginx配置
 有了gunicorn和gevent后，gunicorn可以实现多进程http服务，不过其性能还是相对nginx这种专业的web服务要差一些，主要体现在对高并发的处理、安全问题、静态资源文件的处理等。因此一般情况会在gunicorn之上再配置一层nginx服务。其基本架构示意如下（图来源于百度）：
-![这是图片](./iamges/2.webp "Magic Gardens")
+
+![这是图片](./images/2.webp "Magic Gardens")
+
 - docker部署nginx
 
 由于nginx采用安装方式还相对比较麻烦，可以直接使用docker来部署。不过当然首先在root账户下安装docker服务：
@@ -211,7 +214,9 @@ docker.io/hello-world   latest              bf756fb1ae65        4 months ago    
 79b2f668784f866869f41ab08468784cf5f694fb451486250f37eaaa11808411
 ```
 此时可以从外部浏览器访问获得默认的nginx响应页面：
+
 ![这是图片](./images/3.webp "Magic Gardens")
+
 下面对nginx访问页面做一个映射，因为如果要进入docker内部访问的话还是很不方便的，因此一般情况将docker镜像作为一个服务，而将实际的资源进行一个映射。在本地机器上放置资源，映射到容器内部，nginx访问内部文件路径时就映射到访问外部本地资源上了，这样便于资源分配以及web文件的管理。这里就是增加一个docker的-v参数，格式为本地资源:容器资源。
 
 先进入docker内部，查看nginx的配置文件：
