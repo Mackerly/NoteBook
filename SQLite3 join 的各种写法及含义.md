@@ -18,7 +18,7 @@ FROM table1
 LEFT JOIN table2
 ON table1.column = table2.column;
 ```
-- 含义：返回 table1 中所有记录，以及 table2 中匹配的记录。如果 table2 中没有匹配的记录，对应的字段将显示为 NULL。
+- **含义**：返回 table1 中所有记录，以及 table2 中匹配的记录。如果 table2 中没有匹配的记录，对应的字段将显示为 NULL。
 
 3. RIGHT JOIN (或 RIGHT OUTER JOIN)
 ```sql
@@ -27,7 +27,7 @@ FROM table1
 RIGHT JOIN table2
 ON table1.column = table2.column;
 ```
-- 含义：与 LEFT JOIN 相反，返回 table2 中所有记录，以及 table1 中匹配的记录。如果 table1 中没有匹配的记录，对应的字段将显示为 NULL。
+- **含义**：与 LEFT JOIN 相反，返回 table2 中所有记录，以及 table1 中匹配的记录。如果 table1 中没有匹配的记录，对应的字段将显示为 NULL。
 
 4. FULL JOIN (或 FULL OUTER JOIN)
 ```sql
@@ -36,7 +36,7 @@ FROM table1
 FULL JOIN table2
 ON table1.column = table2.column;
 ```
-- 含义：返回两个表中的所有记录。如果某个表中的行在另一个表中没有匹配的记录，该行的所有字段将显示为 NULL。注意，SQLite 不直接支持 FULL JOIN，但可以用 LEFT JOIN 和 RIGHT JOIN 的联合来模拟：
+- **含义**：返回两个表中的所有记录。如果某个表中的行在另一个表中没有匹配的记录，该行的所有字段将显示为 NULL。注意，SQLite 不直接支持 FULL JOIN，但可以用 LEFT JOIN 和 RIGHT JOIN 的联合来模拟：
 ```sql
 SELECT columns FROM table1 
 LEFT JOIN table2 ON table1.column = table2.column
@@ -52,7 +52,7 @@ SELECT columns
 FROM table1
 CROSS JOIN table2;
 ```
-- 含义：返回两个表的笛卡尔积，即每行与另一表的每一行进行匹配。
+- **含义**：返回两个表的笛卡尔积，即每行与另一表的每一行进行匹配。
 
 6. NATURAL JOIN ( 自然联接 )
 ```sql
@@ -60,7 +60,7 @@ SELECT columns
 FROM table1
 NATURAL JOIN table2;
 ```
-- 含义：基于两个表中相同列名的列进行 INNER JOIN。不需要指定 ON 条件，因为系统会自动匹配同名列。
+- **含义**：基于两个表中相同列名的列进行 INNER JOIN。不需要指定 ON 条件，因为系统会自动匹配同名列。
 
 注意事项
 - 使用 JOIN 时，确保 ON 子句中指定的列是正确的，以避免逻辑错误。
