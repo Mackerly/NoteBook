@@ -48,6 +48,7 @@ Kernel Modules
                      └── kmod-usb-net-qmi-wwan
 ```
 ！！！如果是苹果手机还需要勾选：usbmuxd　和 ipheth　
+
 kmod-usb-net-ipheth（iPhone 专属网卡驱动）核心作用：它是 Linux 内核中的 iPhone 专用 USB 网卡驱动程序（iPhone Ethernet Driver）。具体表现：当 iPhone 接入并开启“个人热点”时，该驱动会让 OpenWrt 系统将 iPhone 识别为一个有线网络设备（通常在后台显示为 ethX 或 usbX 虚拟网卡）。
 
 usbmuxd（USB 多路复用服务）核心作用：它是苹果设备专用的通信守护进程（USB Multiplexing Daemon）。具体表现：由于苹果协议的封闭性，安全级别较高，Linux 无法直接与其通信。usbmuxd 负责在 OpenWrt 和 iPhone 之间建立一条安全的、基于 USB 的加密通信隧道，处理底层的握手、配对和信任认证（即手机上弹出的“信任此电脑”）。只有认证通过后，iPhone 才会允许数据流量通过 USB 传输给路由器。
@@ -248,7 +249,9 @@ make -j$(nproc)
 
 ## 写在最后
 本文与其说是刷机教程，不如说是在刷机的时候解决USB口的部分问题的方法，缺少了很多必要的信息，不推荐任何没有经验的人士直接使用。本人不提供任何免费和付费的刷机咨询，也不会发布或者单独提供任何固件（实际上本人就是因为不信任非OpenWRT官方的来源不明的固件而选择自己编译的），希望本文评论区是关于磊科N30 Pro的USB口问题的讨论。另外，请在刷机前备份好原有固件，因为磊科的网站没有提供任何原厂固件。另外，本文并不是为了找到最小的修改，部分设置可能没有必要。
+
 ————————————————
+
 版权声明：本文为CSDN博主「宋体的微软雅黑」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
 原文链接：https://blog.csdn.net/hsyxxyg/article/details/161982524
 
